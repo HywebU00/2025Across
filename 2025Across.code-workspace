@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveSassCompile.settings.formats": [
+			{
+				"format": "compressed",
+				"extensionName": ".css",
+				"savePath": "~/../css"
+			}
+		],
+		"liveSassCompile.settings.includeItems": [
+			"/scss/style.scss"
+		],
+		"liveSassCompile.settings.showOutputWindowOn": "Warning",
+		"liveSassCompile.settings.generateMap": true,
+		"liveSassCompile.settings.autoprefix": [],
+		"liveSassCompile.settings.useNewCompiler": true,
+		"editor.formatOnSave": true,
+		"liveServer.settings.port": 5501
+	}
+}

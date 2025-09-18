@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025《檔案資源整合查詢平台》gui 清單</title>
+
+  <style>
+    :root{
+      --primary: #4649a3;
+      --whiteFont: #fff;
+    }
+    html{scroll-behavior: smooth;}
+    body {margin: 0;font-family: 'Source Code Pro', Arial, Helvetica, sans-serif;font-size: 16px;background: #fff;}
+
+    h1 {text-align: center;background: var(--primary);color: var(--whiteFont);margin: 0 0 30px;padding: 10px;font-size: 22px;}
+
+    nav.sticky {
+      position: fixed; z-index: 99;
+      right: 0; top: 200px; left: auto;
+      padding: 8px;
+      background-color: rgb(0 0 0 / .7);
+      a{
+        display: block; width: 1em;
+        padding: 8px;
+        line-height: 1.2;
+        text-decoration: none;
+        color: var(--whiteFont);
+        &:hover{ background-color: var(--primary); color: var(--whiteFont);}
+        &+a{border-top: 1px solid #888;}
+      }
+    }
+
+    table {counter-reset: item;border-collapse: collapse;margin: 30px auto 60px;max-width: 1400px;width: 92%;line-height: 1.5;border-bottom: 2px solid #bbb;color: #333; }
+    caption{ font-size: 1.5em; border-bottom: 3px solid var(--primary);font-weight: bold;}
+
+    td,  th {position: relative;padding: .5em .9em;border-bottom: 1px solid #d6d6d6;}
+    th {border-bottom: 3px solid #bbb;white-space: nowrap;}
+    tr:nth-child(5n) td {border-bottom-color: #999}
+    /* tr.new{background: #f1fad0;} */
+
+    th:after,
+    td:after {content: '';position: absolute;top: 4px;bottom: 4px;right: 0;width: 1px;background: #ddd;}
+
+    th:last-child:after,
+    td:last-child:after {display: none}
+
+    td:first-child {text-align: center;font-size: .9em;}
+
+    td:first-child:before {content: counter(item);counter-increment: item;}
+
+    td[colspan] {font-size: 13px;padding: 3px 0 2px;}
+    td[colspan]::before{display: none}
+
+
+    td ul,
+    td ol {margin: 0;padding-left: 1.25em;line-height: 1.4;}
+
+    td ul,
+    td ol {display: none}
+
+    td li+li {margin-top: .6em;}
+
+    a {text-decoration: none;color: #084099;}
+
+    a:hover {text-decoration: underline;color: #0199eb;}
+
+
+    /* tr.hidden, tr.hidden ~ tr{display: none} */
+    @media screen and (max-width: 700px) {
+
+      tr,td,th {display: block;}
+
+      td:after {display: none;}
+
+      td {min-height: 1em;}
+
+      tr:first-child {display: none}
+
+      tr {border: 1px solid #999;margin: 0 0 10px;}
+
+      tr:nth-child(5n) td {border-bottom-color: #d6d6d6}
+
+      td:first-child,
+      td:nth-child(2) {float: left;padding: 8px;height: 16px;background: #eee;border: none;}
+
+      td:nth-child(2) {float: right;}
+
+      td:nth-child(3) {clear: both;}
+
+      td:last-child {border: none;}
+
+      .seperator td:nth-child(2) {float: none;background: transparent;padding: 0;}
+
+      .seperator td:first-child {display: none}
+    }
+  </style>
+
+</head>
+<body>
+  <h1>2025《檔案資源整合查詢平台》gui 清單</h1>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 2em;">序號</th>
+        <th>功能、頁面名稱</th>
+        <th>檔名／連結</th>
+        <th>備註</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>首頁</td>
+        <td><a href="mp.html" target="_blank">mp.html</a></td>
+        <td>編輯中</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>整合查詢</td>
+        <td><a href="search-result.html" target="_blank">search-result.html</a></td>
+        <td>編輯中</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>資源介紹</td>
+        <!-- <td><a href="xxx.html" target="_blank">xxx.html</a></td> -->
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>個人專區</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>平台簡介</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>最新消息</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>新手入門</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>網站地圖</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+</body>
+</html>

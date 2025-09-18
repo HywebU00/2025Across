@@ -119,6 +119,7 @@
         a {
           color: $linkColor2;
           &:hover{ text-decoration: underline;}
+          &:focus { outline: 2px solid $linkColor;}
         }
       }
 

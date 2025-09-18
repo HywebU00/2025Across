@@ -11,7 +11,7 @@
   
   
   display: none;
-  left: $sideBarWidth * (-1);
+  right: $sideBarWidth * (-1);
 
   overflow: hidden; overflow-y: scroll;
   background-color: var(--sidebarBg);
@@ -22,7 +22,7 @@
   transition: .5s;
   
   &.reveal{ 
-    left:0;
+    right:0;
     box-shadow: $shadow1 5px 0 20px;
   }
 

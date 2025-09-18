@@ -101,6 +101,8 @@ $(function(){
   })
   // --------------------------------------------------------------- //
 
+
+
   // 可收合區
   // --------------------------------------------------------------- //
   let _drawer = $('.drawer');
@@ -140,20 +142,34 @@ $(function(){
   _lightbox.before('<div class="coverAll"></div>'); // 燈箱遮罩
   const _coverAll = _lightbox.prev('.coverAll');
   const speedLbx = 300;
+  let _lbxKeptEl;
+  let _lbx_fa_last;
 
 
   // 開燈箱
   _showLightbox.on('click', function(){
-    _lightbox.stop(true, false).fadeIn(speedLbx);
+    _lbxKeptEl = $(this);
+    _lightbox.stop(true, false).fadeIn(speedLbx, function(){
+      _lbx_fa_last = _lightbox.find('a, button, input').last();
+      console.log(_lbx_fa_last.text());
+      _lbx_fa_last.on('keydown', function(e){
+        if ( e.code == 'Tab' && !e.shiftKey ) {
+          e.preventDefault();
+          _hideLightbox.trigger('focus');
+        }
+      })
+    });
     _hideLightbox.focus();
     _coverAll.stop(true, false).fadeIn(speedLbx);
     _body.addClass('noScroll');
+    
 
-  })
+  })  
 
   // 點擊 closeThis 關燈箱
   _hideLightbox.on('click', function(){
     _lightbox.stop(true, false).fadeOut( speedLbx );
+    _lbxKeptEl.trigger('focus');
     _coverAll.fadeOut(speedLbx);
     _body.removeClass('noScroll');
   })
