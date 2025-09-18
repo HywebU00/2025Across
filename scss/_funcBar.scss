@@ -1,0 +1,125 @@
+@use "variables" as *;
+
+// 列印、分享、返回、字型大小 等功能圖示 //
+// ------------------------------------------------------ //
+.funcBar{
+  --size: 54px;
+  --fgc: #fff;
+  --bgc: #456;
+  --bgc2: rgb(18, 129, 163);
+
+  z-index: 99; position: relative; margin-bottom: 10px;
+  ul{ list-style: none; margin: 0;padding: 0; text-align: center;}
+  &>ul{
+    display: flex; flex-flow: row nowrap; justify-content: flex-end;
+    padding-right: 4px;
+    &>li{
+      position: relative; margin:8px 0 4px 8px;padding:0;
+      &:last-child {margin-right: 0;}
+      a, button{
+        display: block;
+        margin:0; padding:0; width: var(--size);height: var(--size);
+        border-radius: 50%;
+        background-color: var(--bgc); background-repeat: no-repeat; 
+        background-position: center center;
+        color: transparent;
+        text-decoration: none; white-space: nowrap;
+        border:none; box-shadow: none; outline: none;
+        transition: .2s;
+        &:hover{box-shadow:var(--fgc) 0 0 0 0 , var(--bgc) 0 0 0 2px;}
+        &:focus{box-shadow:var(--fgc) 0 0 0 1px , var(--bgc) 0 0 0 4px;}
+      }
+      &>a, &>button{
+        &::before {
+          content: attr(aria-label); 
+          position: absolute; left: 0; top: 0;
+          width: 100%; height: 1.1em;line-height: 1;
+          font-size: .9rem; color: $fontColor;
+          opacity: 0; transform: translateY(0);
+          transition: .3s;
+        }
+        &:hover, &:focus{
+          &::before{opacity: 1;transform: translateY(-125%);}
+        }
+      }
+      &.back>a, &.back>button{
+        background-image: url(../images/icon_back.png);
+        background-size: 40px;
+      }
+      &.print>button, &.print>a{
+        background-image: url(../images/icon_print.png);
+        background-size: 26px;
+      }
+      &.share>button, &.share>a{
+        background-image: url(../images/icon_share.png);
+        background-size:auto 26px;
+      }
+
+      // 第二層
+      &.compound {
+        position: relative;
+        &>button{ z-index: 9;position: relative;}
+        &>ul{ 
+          display: none;
+          &>li{
+            position: absolute; top: 0; left: 0;
+            width: var(--size); height: var(--size);
+            margin: 0 0 8px; padding: 0;
+            background-color: var(--bgc);
+            border-radius: 50%;
+            &>a, &>button{
+              width: 100%; height: 100%;
+              outline: none; box-shadow: none;
+              &:hover{
+                background-color: var(--bgc2); 
+                box-shadow:var(--fgc) 0 0 0 0 , var(--bgc2) 0 0 0 2px;
+              }
+              &:focus {
+                background-color: var(--bgc2);
+                box-shadow:var(--fgc) 0 0 0 1px , var(--bgc2) 0 0 0 4px;
+              }
+            }
+          }
+        }
+      }
+      
+      // 分享
+      &.share>ul>li{
+        &>a{
+          text-indent: -15em; overflow: hidden;
+        }
+        img{
+          display: block; width: 100%; height: 100%; 
+          margin: 0 auto;
+        }  
+      }
+
+      // 字型大小
+      &.fontSize{
+        button{color: var(--fgc);font-size: 1rem;}
+        li{
+          button{
+            height: var(--size);
+            background-color: var(--bgc);
+            line-height: var(--size);
+          }
+        }
+
+        .smallFont{ font-size: .85rem;}
+        .mediumFont{ font-size: 1rem;}
+        .largeFont{ font-size: 1.33rem;}
+
+        &>button{ 
+          position: relative; padding-left: .6em;
+          &::after{ position: absolute; left: 8px; bottom: 16px; line-height: 1;}
+        }        
+        &>.smallFont::after{content: '小'; font-size: .4rem;}
+        &>.mediumFont::after{content: '中'; font-size: .4rem;}
+        &>.largeFont::after{content: '大';font-size: .4rem;}
+      }
+      
+      &.compound>button{position: relative; z-index: 19;}
+    }
+  }
+}
+// ------------------------------------------------------ //

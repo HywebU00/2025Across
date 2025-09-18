@@ -1,0 +1,197 @@
+// RWD 斷點 
+// ------------------------------i---------------------------------- //
+$wwSlim: 400px;
+$wwMedium: 700px;
+$wwNormal: 1000px;
+$wwMaximum: 1400px;
+// ---------------------------------------------------------------- //
+
+
+// 長度常數
+// ---------------------------------------------------------------- //
+$sideBarWidth: 300px;  // 窄版側欄選單
+$mobileWidthVW: 92vw; // 窄螢幕寬度 moduals width in mobile
+$normalWidthVW: 92vw; // 寬螢幕寬度
+$mobileWidth: 92%; // 窄螢幕寬度 moduals width in mobile
+$normalWidth: 92%; // 寬螢幕寬度
+$maximumWidth: $wwMaximum*.92; // 內容區最大寬度
+
+// 文件邊界寬度
+$marginDoc: 4%;
+$marginDocMax: calc(50% - $wwMaximum*.46);
+
+$radius: 6px; // 圓角半徑
+$radius1: 12px; // 圓角半徑
+$radius2: 24px; // 圓角半徑
+$bigRadius: 32px; // 圓角半徑
+// ---------------------------------------------------------------- //
+
+
+
+// 首頁主要區塊寬度
+// ---------------------------------------------------------------- //
+%primSecWidth {
+  width: $mobileWidth; margin: 40px auto;
+
+  @media screen and (min-width: $wwNormal){
+    width: $normalWidth;
+  }
+  @media screen and (min-width: $wwMaximum){
+    width: $maximumWidth;
+  }
+}
+// ---------------------------------------------------------------- //
+
+
+
+// 顏色變數
+// ---------------------------------------------------------------- //
+$primaryColor:#4649a3;
+$secondaryColor: #486fa7;
+$assistant1: #4498a9;
+$assistant2: #ae237e;
+$hilight : #d16028;
+$focus: #d00;
+$hover: #f0fcff;
+$warning: #d16028;
+
+$fontColor: #333;
+$fontColorLight: #585454;
+$fontColorPale: #888;
+$fontColorDark: #000;
+$fontInvert: #fff;
+$linkColor: #0076ba;
+$linkColor2: #4649a3;
+$mainBg: #fff;
+
+$borderColor: #afbdbe;
+$borderColorLight: #d6dfe1;
+$borderColorDark:#758487;
+$shadow1:rgba(0, 0, 0, 0.25);
+$shadow2:rgba(0, 0, 0, 0.5);
+
+$white: #fff;
+$black: #000;
+$gray: #dcdfe0;
+$grayLight: #eff1f2;
+$grayDark: #424344;
+$gray500: #a1a6aa;
+$gray700: #5e6264;
+
+
+$btnBg1: $secondaryColor;
+$btnBg2: $assistant2;
+
+$footBg: $primaryColor;
+$sidebarBg: $grayDark;
+// ---------------------------------------------------------------- //
+
+
+// 放大鏡圖示
+// --------------------------------------------------------------- //
+%searchIcon {
+  --tinge : #000;
+  --bgc: #444;
+
+  position: relative;
+  text-indent: -10em; overflow: hidden;
+  background-color: var(--bgc);
+  
+  &::before, &::after{
+    content: ''; position: absolute;
+  }
+  &::before{
+    left: calc(50% - 12px); top: calc(50% - 12px);
+    width: 20px; height: 20px; 
+    border: 2px solid var(--tinge); border-radius: 50%;
+  }
+  &::after{
+    width: 10px; height: 2px; 
+    top: calc(50% + 7px); left: calc(50% + 2px);
+    border-radius: 1px;
+    transform: rotate(45deg);
+    background-color: var(--tinge);
+  }
+}
+// --------------------------------------------------------------- //
+
+
+%gradient-gray {
+  background-image: linear-gradient( 0deg, rgb(255 255 255) 0%, rgb(244 244 244) 100%);
+}
+%gradient-sky {
+  background-image: linear-gradient( 90deg, rgb(215 239 249) 0%, rgb(224 244 252) 67%, rgb(233 248 254) 99%);
+  // box-shadow: rgb(48 129 117) 0 0 0 1px;
+}
+%gradient-ocean {
+  background-image: linear-gradient( 90deg, rgb(120,181,228) 0%, rgb(67,102,160) 100%);  
+}
+
+
+// --------------------------------------------------------------- //
+// --------------------------------------------------------------- //
+// --------------------------------------------------------------- //
+// --------------------------------------------------------------- //
+
+
+
+// accessories 配件、小元件
+
+
+// 放大鏡圖示
+// --------------------------------------------------------------- //
+// %searchIcon {
+//   --tinge : #{$black};
+//   --bgc: #{$white};
+  
+//   position: relative;
+//   text-indent: -10em; overflow: hidden;
+//   background-color: var(--bgc);
+  
+//   &::before, &::after{
+//     content: ''; position: absolute;
+//   }
+//   &::before{
+//     left: calc(50% - 10px); top: calc(50% - 10px);
+//     width: 18px; height: 18px; 
+//     border: 1px solid var(--tinge); border-radius: 50%;
+//   }
+//   &::after{
+//     width: 7px; height: 1px; 
+//     top: calc(50% + 8px); left: calc(50% + 4px);
+//     border-radius: 1px;
+//     rotate: 45deg;
+//     background-color: var(--tinge);
+//   }
+// }
+// --------------------------------------------------------------- //
+
+
+// 直角線條箭頭
+// --------------------------------------------------------------- //
+// 用於 ::before 或 ::after
+// 箭頭預設向下
+@mixin arrow-rightAngle($size:12px, $borderWidth:1px, $borderColor:#888, $rotate:45deg , $aniDuration: .3s) {
+  content: '';  position: absolute; 
+  rotate:$rotate;
+  width: $size; height: $size;
+  border: $borderColor solid $borderWidth; 
+  border-top: none; border-left: none;
+  transition: $aniDuration;
+}
+// --------------------------------------------------------------- //
+
+
+// 直角箭頭-2
+// --------------------------------------------------------------- //
+// 用於 ::before 或 ::after
+// 箭頭預設向右
+@mixin arrow-rightAngle2($size:10px, $borderWidth:3px, $bgColor:#999, $rotate:none , $aniDuration: .3s) {
+  content: '';  position: absolute; 
+  rotate: $rotate;
+  width: $size; height: $size;
+  background-color: $bgColor;
+  clip-path: polygon(0 0, $borderWidth 0, calc(50% + $borderWidth) 50%, $borderWidth 100%, 0 100%, 50% 50%);
+  transition: $aniDuration;
+}
+// --------------------------------------------------------------- //

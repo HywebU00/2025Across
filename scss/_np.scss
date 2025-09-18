@@ -1,0 +1,41 @@
+@use "variables" as *;
+
+// 節點頁
+// ------------------------------------------------------ //
+.np{
+  @extend %primSecWidth;
+
+  ul{ list-style: none; margin: 0; padding: 0; }
+  &>ul>li{
+    margin: 0 0 12px; padding: 0;
+    line-height: 1.5;
+    &>a{
+      display: block; padding: 1em; height: 100%;
+      color: $fontColor; background-color: #fff;
+      border: $borderColor solid 1px;
+      text-decoration: none; outline: none;
+      transition: .2s;
+      &:hover, &:focus {
+        border-color: #fff;
+        box-shadow:$borderColorDark 0 0 0 1px, $shadow1 0 0 20px;
+      }
+      &:focus-visible {box-shadow:$assistant1 0 0 0 2px, $shadow1 0 0 20px;}
+
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+    &>ul{
+      display: flex; flex-flow: row wrap;
+      &>li {
+        flex: 0 0 calc(50% - 6px); margin: 0 12px 12px 0;
+        &:nth-child(even) {margin-right: 0;}
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+  }
+
+}
+// ------------------------------------------------------ //

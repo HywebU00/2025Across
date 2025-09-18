@@ -1,0 +1,121 @@
+@use "sass:color";
+@use "variables" as *;
+
+// 行動版側欄
+// --------------------------------------------------------------- //
+.sidebar{
+  --color:#{$fontColorDark};
+  --sidebarBg : #{$secondaryColor};
+  --menuHover: #{color.adjust($primaryColor, $lightness: 15%)} ;
+  --borderColor: rgb(255 255 255 / .3); 
+  
+  
+  display: none;
+  left: $sideBarWidth * (-1);
+
+  overflow: hidden; overflow-y: scroll;
+  background-color: var(--sidebarBg);
+
+  position: fixed; z-index: 998;
+  width: $sideBarWidth; height: 100vh;
+  top: 0;  overflow: auto;
+  transition: .5s;
+  
+  &.reveal{ 
+    left:0;
+    box-shadow: $shadow1 5px 0 20px;
+  }
+
+
+
+  // 行動版 headNav（從 .siteHeader 複製過來）
+  // ------------------------------------------------------ //
+  .headNav {
+    --abg: transparent;
+    --color : #{$white};
+  
+    margin:16px;
+  
+    &>ul{
+      text-align: center;
+      &>li{
+        margin: 0 0 8px;
+        &>a{
+          position: relative;
+          padding: .8em 1em;
+          border-bottom: 1px solid var(--borderColor);
+          color: var(--color); background: var(--abg);
+          outline: none;
+          transition: .2s;
+          &:hover{ border-bottom-color: $white;}
+          &:focus{
+            box-shadow: var(--color) 0 0 0 2px inset;
+            border-bottom-color: transparent;
+          }
+        }
+
+        &.fontSize{
+          margin-top: 32px;
+          padding: 16px;
+          border: 1px solid var(--borderColor);
+          border-radius: $radius2;
+          &::before { 
+            content: attr(aria-label);
+            display: block; margin: 0 0 8px;
+            color: var(--color);
+          }
+          ul{
+            display: flex; flex-flow: row nowrap;
+            justify-content: center;
+            gap: 8px;
+            li{
+              button{
+                width: 2.8em; height: 2.8em;
+                padding: 0; margin: 0;
+                border-radius: 50%;
+                background-color: rgb(0 0 0 / .2);
+                box-shadow: none;
+                &:hover, &:focus {
+                  box-shadow: $white 0 0 0 2px;
+                }
+              }
+            }
+          }
+        }
+
+        &.login{
+          margin: 32px auto;
+          a{
+            background-color: $assistant2;
+            border-radius: 1.5em;
+            border: none;
+            &:hover{
+              box-shadow:$white 0 0 0 0, $assistant2 0 0 0 2px;
+            }
+            &:focus {
+              box-shadow:$white 0 0 0 1px, $assistant2 0 0 0 4px;
+            }
+          }
+        }
+
+      }
+    }
+
+    &>ul>li.searchLink>a{
+      width: 50%;height: 100%; margin: 0 auto;
+      border-radius: 2em;
+      background-color: $assistant1;
+
+      --color : #{$white};
+      --diam: 12px;
+      --width: 8px;
+      @extend %searchIcon;
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    display: none;
+  }
+
+}
+// --------------------------------------------------------------- //

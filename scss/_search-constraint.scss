@@ -1,0 +1,218 @@
+@use "variables" as *;
+
+
+// 左欄
+// ------------------------------------------------------ //
+.col-left {
+
+  .search-classify,
+  .secHead1 {
+    width: 88%;
+    margin: 0 auto 16px;
+    padding: 0 0 16px;
+  }
+
+  .secHead1 {
+    padding-top: 32px;
+  }
+
+}
+
+// 縮小查詢
+// ------------------------------------------------------ //
+.search-constraint {
+  --inputHeight: 3em;
+
+  padding: 12px 10px;
+  margin: 0 auto 32px;
+  width: calc(88% + 20px);
+  max-width: 98%;
+  border-radius: $radius1;
+  background-color: $white;
+  // box-shadow: rgb(10 20 30 / .1) 0 0 8px;
+
+  form {
+    position: relative;
+    margin: 12px auto 0;
+
+    input[type="text"] {
+      width: 100%;
+      margin: 0;
+      padding-right: var(--inputHeight);
+      height: var(--inputHeight);
+      border-radius: calc(var(--inputHeight)*.5);
+    }
+
+    button {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+
+      @extend %searchIcon;
+      --tinge: #fff;
+      --bgc: #{$primaryColor};
+
+      margin: 0;
+      height: calc(var(--inputHeight) - 8px);
+      aspect-ratio: 1;
+      border-radius: calc(var(--inputHeight)*.5 - 4px);
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: transparent 0 0 0 1px inset, var(--bgc) 0 0 0 1px;
+      }
+
+      &:focus {
+        box-shadow: var(--tinge) 0 0 0 1px inset, var(--bgc) 0 0 0 3px;
+      }
+
+    }
+  }
+
+}
+
+// ------------------------------------------------------ //
+
+// 查詢結果類別
+// ------------------------------------------------------ //
+.search-classify {
+  border-bottom: 1px solid $borderColor;
+
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
+  .secHead3 {
+    position: relative;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 12px 52px 15px 0;
+    margin: 0;
+
+    button.handle {
+      margin: 2px;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background-color: transparent;
+      box-shadow: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: calc(50% - 6px);
+        top: 14px;
+        width: 12px;
+        height: 12px;
+        rotate: 45deg;
+        border: 2px solid $fontColor;
+        border-top: none;
+        border-left: none;
+        transition: .3s;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $white;
+      }
+      &:focus {
+        background-color: $primaryColor;
+        &::after { border-color: $white;}
+      }
+
+      &.closeIt {
+        &::after {
+          rotate: 225deg;
+          top: 18px;
+        }
+      }
+
+
+    }
+  }
+
+  .more {
+    --color: #{$linkColor};
+    --bg: transparent;
+    --moreH: 2.4em;
+
+    margin: 12px 4px 0;
+
+    a {
+      box-shadow: var(--color) 0 0 0 1px;
+      padding-right: 16px;
+
+      &::before {display: none;}
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+
+    &>li {
+      margin: 5px 0;
+
+      a {
+        position: relative;
+        display: block;
+        padding: .4em 12px .3em 24px;
+        color: $fontColor;
+        text-decoration: none;
+        border-radius: 1.2em;
+        outline: none;
+        transition: .3s;
+
+        &::before{
+          content: ''; position: absolute;
+          position: absolute;
+          left: 8px; top: .9em;
+          width: 0;height: 0;
+          border-style: solid;
+          border-width: 4px 0 4px 6px ;
+          border-color: transparent transparent transparent $gray500;
+          transition:.2s;
+        }
+
+        &:hover, &:focus {
+          background-color: $white;
+          &::before{
+            left: 12px;
+            border-left-color: $assistant2;
+          }
+        }
+        &:hover {
+          box-shadow:$white 0 0 0 3px, $gray 0 0 12px;
+        }
+
+        &:focus {
+          box-shadow: $linkColor 0 0 0 2px, $gray 0 0 0;
+        }
+      }
+
+      .count {
+        display: inline-block;
+        padding: 0 4px;
+        margin-left: 8px;
+        height: 1.25em;
+        line-height: 1.3;
+        font-size: .92em;
+        border-radius: .6em / 1em;
+        border: 2px solid $borderColorDark;
+        border-top: none;
+        border-bottom: none;
+      }
+    }
+  }
+}
+// ------------------------------------------------------ //

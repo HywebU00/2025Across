@@ -1,0 +1,300 @@
+@use "variables" as *;
+
+// 現在位置（麵包屑） //
+// ------------------------------------------------------ //
+.breadcrumb {
+  display: none;
+  @extend %primSecWidth;
+
+  @media screen and (min-width: $wwNormal){
+    display: block;
+    padding: 0; margin:30px auto;
+    ul{list-style: none; margin: 0; padding: 0;line-height: 1.2; overflow: hidden;}
+    &>ul>li{
+      float: left;position: relative;
+      margin: 0 6px 0 0;padding: 0 15px 0 0;
+      &::after{
+        content: ''; position: absolute; right: 2px; top: 6px;
+        width: 8px; height: 8px;rotate: 45deg;
+        border: 2px solid $gray500; border-left: none; border-bottom: none;
+      }
+      &:last-child {
+        font-weight: bold; 
+        &::after{display: none;}
+      }
+      a{
+        display: block; padding: 3px 2px 0;
+        text-decoration: none; color: $fontColor;
+        border-bottom: 2px solid transparent;
+        &:hover, &:focus{ border-bottom-color: $fontColorLight;}
+        &:focus-visible{outline: 2px solid $fontColor; outline-offset: -2px}
+      }
+    }
+  }
+}
+// ------------------------------------------------------ //
+
+
+
+
+
+// 內頁標題 //
+// ------------------------------------------------------ //
+.pageHeader{
+  @extend %primSecWidth;
+  position: relative;
+  &::after{
+    content: ''; display: block; clear: both;
+  }
+
+  outline: 1px dashed #f008;
+  outline-offset: -1px;
+  h2 {
+    float: left;
+    padding: 0;margin:16px 0 8px; line-height: 1.3;
+    font-size: 2em; 
+  }
+
+  .funcBar {float: right; margin-left: 20px;}
+
+  @media screen and (min-width: $wwNormal){
+  }
+
+}
+// ------------------------------------------------------ //
+
+
+
+
+
+// 檔案類型圖示 //
+// ------------------------------------------------------ //
+.fileType{
+  --bg : #aaa;
+  --color : #fff;
+
+  display: block; position: relative; 
+  margin: 0; width: 28px; height: 32px; line-height:42px;
+  font-size: .6rem; text-decoration: none; text-align: center;
+  color: var(--color); 
+  background-image: linear-gradient(45deg, var(--bg) 86%, transparent 86%);
+  border-radius: 3px;
+  transition: .2s;
+
+  &::before, &::after{
+    content: ''; position: absolute;
+  }
+  &::before{
+    top: 5px; left: 5px; right: 5px; height: 1px;
+    background-color: rgba(255,255,255,.65);
+    box-shadow: rgba(255,255,255,.65) 0 3px 0, rgba(255,255,255,.65) 0 6px 0;
+  }
+  &::after{
+    right: 0; top: 0;
+    width: 8px; height: 8px; border-radius: 0 0 0 2px;
+    background-color: rgba(255,255,255,.65);
+  }
+  &.pdf { --bg : #d00; }
+  &.doc , &.docx, &.odt{ --bg:#0863a0; }
+  &.xls, &.xlsx, &.csv, &.ods { --bg:#48920f; }
+  &.ppt, &.pptx, &.odp{ --bg:#f75217; }
+  &.txt { --bg:#1d98e4; }
+  &.jpg,  &.jpeg,  &.png { --bg:#089c9f; }
+  &.mp3, &.mp4 { --bg:#9d3a89; }
+  &.mov, &.wmv{ --bg:#5843a9; }
+  &.zip { --bg:#333; }
+  &.other { --bg:#555;}
+}
+a .fileType, .fileType>a{ color: #fff; text-decoration: none; }
+a:hover, a:focus{
+  .fileType{box-shadow:var(--color) 0 0 0 1px inset, var(--bg) 0 0 0 2px;}
+}
+// ------------------------------------------------------ //
+
+
+
+
+
+// ############################################################################################ //
+// ############################################################################################ //
+
+
+
+
+
+// slick 套件用元件樣式
+// ------------------------------------------------------ //
+.slick-slider {
+  position: relative;
+  margin: 0 auto;
+
+  button {
+    border: none;outline: none;box-shadow: none;
+    background-color: transparent;
+    padding: 0; margin: 0;width: auto; 
+    overflow: hidden; cursor: pointer;
+  }
+
+  // 點點或數字
+  .slick-dots { 
+    --tinge: #bbb;
+
+    list-style: none; margin: 0 auto; padding: 0;
+    text-align: center; font-size: 0;
+    li { 
+      display: inline-block; margin: 0 5px;padding: 11px 0;
+      button { 
+        width: 8px; height: 8px; border-radius: 4px;
+        font-size: 0;
+        background-color: var(--tinge);
+        transition: .3s;
+        &:hover, &:focus{box-shadow: var(--tinge) 0 0 0 2px;}
+      }
+
+      &.slick-active{
+        --tinge: #c30;
+        button{ 
+          width: 28px; 
+          &:focus{ box-shadow:$gray 0 0 0 1px,  var(--tinge) 0 0 0 3px; }
+        }
+      }
+
+      &:empty{
+        padding: 0; margin: 3px 5px;
+        width: 8px; height: 8px; border-radius: 4px;
+        font-size: 0;
+        background-color: var(--tinge);
+        transition: .3s;
+        // &:hover, &:focus{box-shadow: var(--tinge) 0 0 0 2px;}
+
+        &.slick-active{
+          --tinge: #c30;
+          width: 28px; 
+        }
+      }
+
+    }
+  }
+
+
+  // 左右箭頭
+  .slick-arrow {
+    --tinge: #fff;
+    --bg: rgb(0 0 0 / .3);
+    --gap: 8px;
+    --size: 64px;
+    --arrow-size: 20px;
+
+    position: absolute; z-index: 9; 
+    top: 50%; translate: 0 calc(var(--size)*(-.5));
+    width: var(--size); height: var(--size);
+    font-size: 0; cursor: pointer;
+    background-color: var(--bg);
+    transition: .2s;
+    &::before{
+      content: ''; display: block; margin: 0 auto ;
+      width: var(--arrow-size); height: var(--arrow-size);
+      transform:  rotate(45deg);
+      border: 4px solid var(--tinge);
+    }
+
+    &.slick-prev { 
+      left: var(--gap); padding-left: calc(var(--size)/2 - var(--arrow-size)/2 - 8px);
+      &::before{border-top: none; border-right: none;}
+    }
+    &.slick-next { 
+      right: var(--gap); padding-right: calc(var(--size)/2 - var(--arrow-size)/2 - 8px);
+      &::before{ border-bottom: none; border-left: none;}
+    }
+
+    &:hover, &:focus{
+      box-shadow: none;
+      &.slick-prev { left: 2px;}
+      &.slick-next { right: 2px;}
+    }
+    &:hover{ --bg: rgb(0 0 0 / .8); }
+    &:focus{ 
+      --bg: #d00; 
+      box-shadow: var(--bg) 0 0 0 3px inset, #fff 0 0 0 4px inset; 
+    }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+// 非 slick 套件的點點或數字
+// --------------------------------------------------------------- //
+.dots { 
+  --tinge: #666;
+
+  list-style: none; margin: 16px auto 6px; padding: 0;
+  text-align: center; line-height: 1;
+  font-size: 1rem;
+  color: #aaa;
+  li { 
+    position: relative;
+    display: inline-block; margin: 0 5px;padding: 0 0 10px;
+    &::before {
+      content: ''; position: absolute; bottom: 0; left:calc(50% - 3px);
+      width: 6px; height: 6px; border-radius: 4px;
+      background-color: var(--tinge);
+      transition: .3s;
+    }
+
+    &.active{
+      --tinge: #fc3;
+      color: #fff;
+      &::before{ box-shadow: var(--tinge) 0 0 0 2px;}
+    }
+
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// --------------------------------------------------------------- //
+// 內頁附圖 flow 點點、箭頭樣式
+.flow {
+
+  // 點點
+  .slick-dots {
+    --tinge: #bbb;
+
+    list-style: none; margin: 0 auto; padding: 8px;
+    li{
+      button {
+        border: none; box-shadow: none;
+        background-color: var(--color);
+      }
+      &.slick-active {
+        --tinge: #f60;
+        box-shadow: var(--tinge) 0 0 0 3px;
+      }
+    }
+  }
+
+  // 箭頭
+  .slick-arrow {
+    --bg : #000;
+    --front : #fff;
+
+    background-color: var(--bg);
+
+    &::before {
+      content: '';
+      position: absolute;  top: calc(50% - 6px); 
+      width: 10px; height: 10px; transform: rotate(45deg);
+      border: 2px solid var(--front); 
+    }
+    &.slick-prev {
+      &::before { border-top: none;border-right: none;left: calc(50% - 4px);}
+    }
+    &.slick-next {
+      &::before { border-bottom: none;border-left: none;right: calc(50% - 4px);}
+    }
+
+    // &:hover{ transform: scale(1.2);}
+  }
+} 
+// --------------------------------------------------------------- //

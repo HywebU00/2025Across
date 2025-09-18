@@ -1,0 +1,392 @@
+@use "variables" as *;
+
+// 表單排版表格 
+// -------------------------------------------------------------- //
+table.formLayout{
+  width: 100%; margin: 0 auto;
+  border-collapse: collapse;
+  line-height: 1.5;
+
+  tr{border-bottom: 1px solid $borderColor;}
+
+  td{
+    padding: 3px; 
+    &:nth-child(odd) {
+      text-align: right; width: 12%; min-width: 5.5em;
+      vertical-align: top; padding-top: 1.1em;
+    }
+    &:nth-child(even) {
+      color: $fontColor;
+    }
+
+    // .fullWidth{width: 92%;}
+    // .duration { width: calc(92% + 10px); }
+    // .optionPool{width: 92%; }
+    // .msg {display: none !important;}
+  }
+
+  &+.formLayout { margin-top: 10px;}
+
+  &+.btnDv{ margin-top: 16px;}
+
+  // 必填欄位符號 *
+  abbr.required{
+    display: inline-block;scale: 1.25;
+    color: $warning; margin-right: 3px; text-decoration: none;
+  }
+
+
+
+
+  // 表單中的 提示、警告、錯誤訊息；說明文字
+  // -------------------------- //
+  .msg{
+    --color-hint: #{$grayDark};
+    --color-warning: #{$hilight};
+    --color-error: #{$warning};
+
+    display: none; position: relative;
+    padding:6px 38px 5px 34px; margin: 6px 5px;
+    line-height: 1.5;
+
+    outline: 1px dashed #f008;
+    outline-offset: -1px;
+    &::before{
+      content: ''; position: absolute; left: 4px; top: 5px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 20px;
+    }
+
+    &.hint{
+      color: var(--color-hint);
+      // background-color: #cdeff3;
+      &::before{  
+        background-image:url(../images/icon_msg_hint.svg);
+        background-color:var(--color-hint);
+      }
+    }
+    &.warning{ 
+      color: var(--color-warning);
+      // background-color: #fce8d4;
+      &::before{
+        background-image:url(../images/icon_msg_warning.svg);
+        background-color:var(--color-warning);
+      }
+    }
+    &.error{
+      color: var(--color-error);
+      // background-color: #fae1eb;
+      &::before{
+        background-image:url(../images/icon_msg_error.svg);
+        background-color:var(--color-error);
+      }
+    }
+
+    button.closeThis{
+      --width:28px;
+      --bar-length:18px;
+      --bar-thick:3px;
+
+      background-color: transparent;
+    
+      position: absolute; right: 4px; top: 4px;
+      border-radius: 0;
+      &::before, &::after { background-color: $borderColorDark}
+      &:hover, &:focus { 
+        background-color: $hover;
+        &::before, &::after { background-color: $fontColor;}
+      }
+      &:focus{
+        background-color: $assistant1;
+        box-shadow: $assistant1 0 0 0 2px;
+        &::before, &::after { background-color: #fff;}
+      }
+    }
+  }
+
+  // 輸入欄位之外的說明或提示文字
+  p.note{
+    margin:9px 5px 12px; line-height: inherit;
+    font-size: .88em; color: $fontColorLight;
+    &::before {content: '❖'; margin-right: 6px; color: $fontColorDark;}
+    a{ color: $linkColor;
+      &:hover, &:focus{outline: 1px solid $linkColor; text-decoration: none;}
+    }
+  }
+
+
+
+
+  @media screen and (max-width: $wwMedium){
+    tr, td {display: block;}
+    td{
+      &:nth-child(odd){
+        text-align: left; width: auto;
+        padding: .8em 6px 0; margin-bottom: -6px;
+      }
+      &:nth-child(even){padding-right: 0; padding-bottom: 12px;}
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    max-width: 1100px;
+  }
+
+}
+
+
+
+
+
+
+
+// 按鈕群
+// -------------------------------------------------------------- //
+.btnDv{
+  text-align: center; padding: 8px 16px;
+}
+
+// -------------------------------------------------------------- //
+
+
+
+// 表單輸入欄位下方的提示或說明文字 
+// -------------------------------------------------------------- //
+.notice{
+  position: relative;
+  display: inline-block; margin: 4px 0 0 .5em;
+
+  &.pass , &.warning, &.fail {
+    padding-left: 1.4em; 
+    &::before{
+      position: absolute; left: 0; top: .15em;
+      content: ''; width: 1.3rem; height: 1.3rem; 
+    }
+  }
+
+  // 打勾
+  &.pass{
+    color: $secondaryColor;
+    &::before{
+      background: $secondaryColor url(../images/icon_check.svg) no-repeat center center;
+      background-size: 70% 85%;
+      border-radius: 50%;
+    }
+  }
+
+  // 驚嘆號 ！
+  &.warning{
+    color: $hilight;
+    &::before{
+      background: url(../images/icon_warning.svg) no-repeat center center;
+      background-size: 100% auto;
+    }
+  }
+
+  // 打叉 ✖️
+  &.fail{
+    color: $hilight;
+    &::before{
+      background: url(../images/icon_error.svg) no-repeat center center;
+      background-size: 100% auto;
+      border-radius: 50%;
+    }
+  }
+
+}
+
+// -------------------------------------------------------------- //
+// -------------------------表單常用模組------------------------- //
+// -------------------------------------------------------------- //
+
+// 日期區間
+// -------------------------------------------------------------- //
+.duration{
+  position: relative;
+  display: flex; justify-content: space-between;
+  input{ 
+    flex: 0 1 calc(50% - 1em);
+    &:last-child{margin-left: 1.2em;}
+  }
+  input[type="date"]{cursor: pointer;}
+  &::before{
+    content: '～'; display: inline-block;  text-align: center;
+    line-height: 2.9; width: 1.3em;
+    position: absolute; left: calc(50% - .6em);
+  }
+}
+// -------------------------------------------------------------- //
+
+
+// 單選、複選 radio button & checkbox
+// -------------------------------------------------------------- //
+.optionPool{ 
+  margin: 5px;
+  label{
+    display: inline-block;line-height: 1.4;
+    margin:3px .6em 3px 3px; padding: .6em .7em .5em 5px; 
+    &:hover, &:focus {box-shadow: $borderColor 0 0 0 1px inset;}
+    input[type="checkbox"], input[type="radio"]{ vertical-align: top; }
+    input[type="radio"]{margin-top: .08em;}
+    input[type="checkbox"]{margin-top: .18em;}
+  }
+  &.block {
+    label{ 
+      display: block;
+      &:hover, &:focus {box-shadow: none;}
+    }
+  }
+
+  &>.checkAndText{
+    padding-bottom: 1px;
+    border-bottom: 1px dashed $borderColor;
+    input[type="text"]{ 
+      margin-left: 1.8em;
+      width: calc(100% - 1.8em);
+    }
+  }
+
+  // 「其他」項目，含文字輸入
+  .addition{ 
+    display: flex; width: 100%;
+    input[type="text"] {flex: 1 1 auto; margin-left: -.45em; max-width: 20em;}
+  }
+
+  // 選項 check 後出現的附件或連結
+  .checkToShow {
+    display: none; 
+    margin: 0;padding: 0 0 .5em 2.2em;
+    line-height: 1.3;
+    li{
+      display: inline-block;padding: 0; margin:0 1.2em .4em 0;
+      &::before {content: '▸ ';}
+      a{ 
+        color: $linkColor;
+        &:hover, &:focus {
+          text-decoration: none;
+          outline: 1px solid $linkColor;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    &>.checkAndText {
+      display: flex; align-items: center;
+      min-height: 2.2em;
+      &>label{
+        flex: 0 0 48%;
+        padding-left: 2em; padding-right: 0;
+        text-indent: -1.7em;
+      }
+      &>input[type="text"] {
+        flex: 1 1 calc(50% - 12px); width: auto;
+        margin-left: 12px;
+      }
+    }
+  }
+}
+// -------------------------------------------------------------- //
+
+
+// 電話號碼組
+// ------------------------------------------------------ //
+.mobilePhoneSet, .phoneSet{
+  display: flex;align-items: center; flex-wrap: wrap;
+  margin-bottom: .7em;
+  label{white-space: nowrap; flex: 0 0 auto;}
+
+  @media screen and (min-width: $wwMedium){
+    flex-wrap: nowrap;
+  }
+  @media screen and (min-width: $wwNormal){
+    margin-left: .6em; margin-bottom:0;
+  }
+}
+// 行動電話
+.mobilePhoneSet{
+  input{flex: 1 1 auto;}
+}
+//市內電話
+.phoneSet{
+  label{ flex: 1 1 100%;}
+  input.areaCode{ flex: 0 1 4em; width: 4em; }
+  input:last-child{ flex: 1 1 auto;}
+
+  @media screen and (min-width: $wwMedium){
+    label{ flex: 0 0 auto;}
+  }
+
+}
+// ------------------------------------------------------ //
+
+
+// 附件上傳
+// ------------------------------------------------------ //
+.uploadFile{
+  display: flex;flex-wrap: wrap;
+  input:first-child { flex: 1 1 100%}
+  button{ flex: 1 1 45%; padding-left: 0.5em; padding-right: 0.5em;}
+
+  @media screen and (min-width: $wwNormal){
+    flex-wrap: nowrap;
+    input:first-child { flex-basis: 42%}
+    button{ flex: 1 1 auto}
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    input:first-child { flex-basis: 52%}
+  }
+}
+// ------------------------------------------------------ //
+
+
+
+// 驗證碼
+// ------------------------------------------------------ //
+.captchaSet{
+  display: flex; align-items: center; flex-wrap: wrap;
+  img{flex: 0 0 auto; height: 50px; margin: 5px;}
+  input{ flex: 1 1 50%; width: auto;}
+
+  // a 或 button 元件排版
+  .refresh, .play{flex: 1 1 45%;}
+
+  // a 或 button 元件 樣式細節
+  a.refresh, a.play, 
+  button.refresh, button.play {
+    position: relative;
+    padding: 0 .5em; margin: 5px;
+    font-size: inherit; white-space: nowrap; text-align: center;
+    height: var(--inputHeight); line-height: var(--inputLineHeight);
+    border: 1px solid $primaryColor;
+    color: $white; background-color: $primaryColor;
+    text-decoration: none;
+    &::before{
+      content: ''; display: inline-block;
+      position: relative; top: calc(50% - 18px);
+      margin: 0 4px 0 0; width: 36px; height: 36px;
+      vertical-align: top;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 100%;
+      filter: brightness(15);
+    }
+    &:hover, &:focus{
+      background-color: $assistant1;
+      color: $primaryColor;
+      &::before{filter: none;}
+    }
+  }
+  .refresh::before{background-image: url(../images/icon_refresh.png);}
+  .play::before{background-image: url(../images/icon_voice.png);}
+
+  @media screen and (min-width: calc($wwNormal + 100px)){
+    input{ flex: 0 1 25%; min-width: 9em;}
+    .refresh, .play{ flex: 1 1 20%; max-width: 10em}
+  }
+}
+// ------------------------------------------------------ //
+

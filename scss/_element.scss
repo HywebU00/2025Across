@@ -1,0 +1,365 @@
+@use "sass:color";
+@use "variables" as *;
+
+
+// 無障礙定位點
+// --------------------------------------------------------------- //
+.accesskey{
+   display: none;
+  @media screen and (min-width: $wwNormal){
+    display: block; z-index: 99; margin: 3px;
+    position: absolute; top: 0; left: calc($marginDoc - 1.5em); 
+    line-height: 1.2; text-decoration: none; 
+    color: $fontColorLight;
+    &:hover{outline: 1px solid $linkColor;}
+    &:focus-visible{outline: 2px solid $linkColor;}
+  }
+  @media screen and (min-width: $wwMaximum){
+    left:calc( $marginDocMax - 1.5em);
+  }
+}
+.main:has(.col-left) .accesskey {
+  @media screen and (min-width: $wwNormal){
+    left: 0;
+  }
+}
+
+
+
+// 時間、日期格式
+// --------------------------------------------------------------- //
+time {
+  display: inline-block;
+}
+// --------------------------------------------------------------- //
+
+
+
+// 跳至內容區 
+// --------------------------------------------------------------- //
+.goCenter{
+  --bg:#555;
+  --color:#fff;
+
+  display: none;
+  @media screen and (min-width: $wwNormal) {
+    display: block; z-index: 880;
+    position: fixed; top: -2em; right: 60%; 
+    padding: 0 .5em; border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    height: 1.8em; line-height: 1.9;
+    text-decoration: none; outline: none; cursor: pointer;
+    background-color: var(--bg); color: var(--color);
+    transition:top .3s; 
+    &:focus{ --bg: #000; top: 0;}
+  }
+  @media screen and (min-width: $wwMaximum) {
+    // left: calc( 50vw  - #{$wwMaximum}*.5 );
+    right: calc(50% + #{$wwMaximum}*.1);
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// 回頁面最上方 
+// --------------------------------------------------------------- //
+.goTop{
+  --tinge: #fff;
+  --bg: #555;
+  --size: 60px;
+  --arrowSize : 12px;
+
+  position: fixed;right: 16px; bottom: -80px; z-index: 90; 
+  width: var(--size); height: var(--size);
+  text-indent: -15em;overflow: hidden;
+  padding:0;margin: 0;
+  border: none; border-radius: 50%; 
+  background-color: var(--bg);
+  box-shadow: var(--bg) 0 0 0;
+  transition: all .2s, bottom 1s;
+  &::before{
+    content: ''; position: absolute;
+    box-sizing: border-box;
+    width: var(--arrowSize); height: var(--arrowSize);
+    left: calc( ( var(--size) - var(--arrowSize) )/2 ); 
+    top: calc( var(--size)/2 - var(--arrowSize)/3 );
+    border: 3px solid var(--tinge); 
+    border-bottom: none; border-right: none;
+    transform: rotate(45deg);
+  }
+
+  &:hover, &:focus {--bg: #000;}
+  &:focus{--bg: #a00;box-shadow: var(--bg) 0 0 0 3px;}
+
+  &.show{ bottom: 16px;}
+
+  @media screen and ( min-width: calc($wwMaximum + 152px) ) {
+    right: calc(50% - $wwMaximum*.5 - var(--size));
+  }
+
+}
+// --------------------------------------------------------------- //
+
+
+
+
+
+
+// 查詢圖示 ｜ 行動版側欄開關 
+// --------------------------------------------------------------- //
+.sidebarCtrl {
+  position: absolute;
+  width: 48px; height: 48px; 
+  margin: 0; padding: 0; border-radius: 0;
+  border: none; box-shadow: none; outline: none;
+  text-indent: -20em; overflow: hidden;
+  cursor: pointer;
+}
+
+// 行動版側欄開關 （漢堡）
+// --------------------------------------------------------------- //
+.sidebarCtrl{
+  --tinge : #{$white};
+  --bg: transparent;
+  
+  transition: .2s;
+  background-color: var(--bg);
+
+  &::before, &::after{
+    content: ''; width: 24px; height: 2px;
+    position: absolute; top: calc(50% - 1px); left: calc(50% - 12px);
+    background: var(--tinge); 
+    transition: .3s;
+  }
+  &::before{
+    box-shadow: var(--tinge) 0 -8px 0, var(--tinge) 0 8px 0;
+  }
+  &::after {opacity: 0;}
+
+  &.closeIt{
+    box-shadow: var(--bg) 0 0 0 4px;
+    &::before, &::after{
+      width: 28px;left: calc(50% - 14px);
+      background-color: var(--tinge); 
+    }
+    &::before{ 
+      transform: rotate(45deg);
+      box-shadow: none;
+    }
+    &:after{
+      opacity: 1;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &:hover, &:focus{
+    --bg: #{$assistant2};
+  }
+  &:focus-visible{
+    box-shadow: var(--tinge) 0 0 0 2px inset;
+  }
+
+}
+// --------------------------------------------------------------- //
+
+// 查詢區開關圖示 
+// --------------------------------------------------------------- //
+.searchCtrl{
+  --tinge : #{$fontColor};
+  --bg: #{$white};
+
+  @extend %searchIcon;
+  transition: .2s;
+  background-color: var(--bg);
+
+  &.closeIt{
+    --bg: #{$primaryColor};
+    &::before, &::after {
+      width: 28px; height: 2px; top: calc(50% - 1px); left: calc(50% - 14px);
+      border: none; border-radius: 0;
+      background-color: var(--tinge);
+    }
+    &::before{
+      transform: rotate(45deg);
+    }
+    &::after{
+      transform: rotate(-45deg);
+    }
+  }
+  
+  &:hover, &:focus {
+    --tinge: #{$white};
+    --bg: #{$fontColor};
+  }
+  &:focus{
+    box-shadow: var(--bg) 0 0 0 4px;
+  }
+
+  @media screen and (min-width: $wwNormal){
+  }
+}
+// --------------------------------------------------------------- //
+
+
+// 側欄遮罩 
+// --------------------------------------------------------------- //
+.sidebarMask {
+  display: none;z-index: 810;
+  position: fixed;left: 0;right: 0;top: 0;bottom: 0;
+  background-color: rgba(0 0 0 / .6);
+}
+// --------------------------------------------------------------- //
+
+
+// MORE
+// --------------------------------------------------------------- //
+.more {
+  --color: #{$fontColor};
+  --bg: transparent;
+  --moreH: 2.6em;
+
+  margin: 8px 0;
+  text-align: right;
+
+  a {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    outline: none;
+    height: var(--moreH);
+    line-height: calc(var(--moreH) + 0.1em);
+    border-radius: 2em;
+    padding: 0 32px 0 16px;
+    transition: .2s;
+
+    color: var(--color);
+    background-color: var(--bg);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(50% - 6px);
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      transition: .2s;
+      border: 2px solid var(--color);
+      border-left: none;
+      border-bottom: none;
+    }
+
+    &:hover,
+    &:focus {
+      --color: #{$white};
+      --bg: #{$primaryColor};
+    }
+  }
+
+}
+// --------------------------------------------------------------- //
+
+
+
+// 關閉 「X」
+// --------------------------------------------------------------- //
+button.closeThis{
+  --width:40px;
+  --bar-length:20px;
+  --bar-thick:2px;
+
+  position: relative;
+  height: var(--width); width:  var(--width); padding: 0; margin: 0;
+  text-indent: -20em; overflow: hidden;
+  border-radius: 0; border: none; box-shadow: none;
+  background-color: $shadow1;
+  border-radius: 50%;
+
+  &::before, &::after{
+    content: ''; 
+    position: absolute; 
+    left: calc( (var(--width) - var(--bar-length))/2 );
+    top:  calc( (var(--width) - var(--bar-thick))/2 );
+    width: var(--bar-length); height: var(--bar-thick); 
+    background-color: $white;
+  }
+  &::before{transform: rotate(45deg);}
+  &::after{transform: rotate(-45deg);}
+
+  &:hover, &:focus { 
+    background-color: $black;
+    // &::before, &::after{ background-color: $primaryColor;}
+  }
+   &:focus{
+    box-shadow: $white 0 0 0 2px;
+   }
+}
+
+
+// 控制輪播暫停、繼續 button
+// --------------------------------------------------------------- //
+button.ppButton, button.pausePlay {
+  --bg: #333;
+  --tinge: #69edf4;
+
+  position: absolute;
+  width: 48px; height: 48px; border-radius: 0;
+  padding: 0; margin: 0;
+  background-color: var(--bg);
+  box-shadow: none;
+  transition:all .2s, translate .4s, left 0s;
+  &:focus, &:hover{ 
+    box-shadow: var(--tinge) 0 0 0 1px, var(--bg) 0 0 0 4px;
+  }
+  &::before, &::after {content: ''; position: absolute;}
+  &::before {
+    top: calc(50% - 8px); left: calc(50% - 8px);
+    width: 5px; height: 16px;
+    border-radius: 2px;
+    background-color: var(--tinge);
+    box-shadow:  var(--tinge) 11px 0 0 0;
+  }
+  &::after {
+    display: none;
+    top: calc(50% - 10px); left: calc(50% - 4px);
+    width: 1px; height: 1px;
+    border-style: solid;
+    border-width: 10px 0 10px 12px;
+    border-radius: 3px;
+    border-color: transparent transparent transparent var(--tinge);
+  }
+  &.paused{
+    --bg: #d00;
+    --tinge: #fff;
+  
+    opacity: 1;
+    &::before{ display: none; }
+    &::after{ display: block; }
+    // &:focus { box-shadow:#fff 0 0 1px, var(--tinge) 0 0 0 3px; }
+  }
+}
+// --------------------------------------------------------------- //
+
+
+
+// 20250916 new
+// --------------------------------------------------------------- //
+.secHead1, .secHead2, .secHead3 {
+  display: block;
+  font-weight: bold;
+  line-height: 1.2;
+}
+.secHead1 {
+  font-size: 1.5em;
+  color: $primaryColor;
+}
+.secHead2 {
+  font-size: 1.2em;
+  color: $fontColorDark;
+}
+.secHead3 {
+  font-size: 1.125em;
+  color: $fontColorDark;
+}
+// --------------------------------------------------------------- //

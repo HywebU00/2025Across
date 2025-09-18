@@ -1,0 +1,118 @@
+@use "variables" as *;
+
+// headNav
+// ------------------------------------------------------ //
+.headNav {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+}
+
+// 寬螢幕版在 header 內
+// -------------------------------------------- //
+.siteHeader .headNav {
+  display: none;
+
+  @media screen and (min-width: $wwNormal) {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: $marginDoc;
+    
+    &>ul {
+      overflow: hidden;
+      padding: 12px 0;
+
+      &>li {
+        float: left;
+        margin: 0 2px 0 14px;
+
+        a {
+          position: relative;
+          display: block;
+          margin: 3px 2px;
+          padding-bottom: 4px;
+          color: $white;
+          outline: none;
+
+          &::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 3px;
+            background-color: $white;
+            transition: .2s;
+          }
+
+          &:hover,
+          &:focus {
+            &::after {
+              width: 100%;
+              left: 0;
+            }
+          }
+
+          &:focus-visible {
+            outline: 1px solid $white;
+          }
+        }
+
+        &.fontSize{
+          translate: 0 -5px;
+          ul{
+            li{
+              margin: 0; padding: 2px;
+              float: left;
+              button{
+                text-align: center;
+                padding: 0; margin: 0;
+                width: 2rem; height: 2rem;
+                line-height: 2;
+                border-radius: 50%;
+                background-color: rgb(0 0 0 / .4);
+                box-shadow: transparent 0 0 0 1px;
+                &:hover{
+                  box-shadow:$white 0 0 0 1px;
+                }
+                &:focus{
+                  box-shadow:$white 0 0 0 2px;
+                }
+              }
+            }
+          }
+        }
+
+        &.login {
+          translate: 0 -8px;
+          a{
+            background-color: $assistant2;
+            padding: 8px .8em;
+            border-radius: 1.5em;
+            outline: none;
+            transition: .2s;
+            &::after { display: none; }
+            &:hover{ box-shadow: $assistant2 0 0 0 2px;}
+            &:focus{ box-shadow:$white 0 0 1px, $assistant2 0 0 0 3px;}
+          }
+        }
+      }
+
+
+    }
+
+  }
+
+  @media screen and (min-width: $wwMaximum) {
+    right: $marginDocMax;
+  }
+}

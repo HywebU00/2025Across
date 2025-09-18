@@ -1,0 +1,39 @@
+@use "variables" as *;
+
+
+body{
+  margin: 0; padding: 0;
+  font-size: 1em; 
+  font-family: Arial, Helvetica, "Microsoft JhengHei", "微軟正黑體", sans-serif;
+  
+  &.noScroll{ overflow: hidden; overflow-y:hidden; }
+}
+*,
+*::before,
+*::after {box-sizing: border-box;}
+
+a{
+  color: $linkColor;
+  &:focus-visible{ outline: 2px solid $primaryColor;}
+}
+// ------------------------------------------------------ //
+
+.main{
+  position: relative; margin: 0 auto;
+
+  &:has(>.col-left) {
+    display: flex; flex-flow: row nowrap;
+  }
+  .col-left {
+    flex: 0 0 22%; max-width: 400px;
+    background-color: $grayLight;
+  }
+  .col-right{
+    flex: 1 1 auto;
+  }
+}
+
+// 首頁區塊標題字
+.blockHeader{
+  margin:10px 0;
+}

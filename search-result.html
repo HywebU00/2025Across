@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>檔案資源整合查詢平台</title>
+  <link href="images/favicon.png" rel="icon" type="image/ico">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/uieffect.js"></script>
+
+</head>
+
+<body>
+  <a class="goCenter" href="#aC" tabindex="0">按 Enter 到主內容區</a>
+
+  <header class="siteHeader">
+    <a class="accesskey" href="#aU" accesskey="U" title="版頭區">:::</a>
+
+    <h1><a href="mp.html">檔案資源整合查詢平台</a></h1>
+
+    <nav class="headNav">
+      <ul>
+        <li><a href="#">平台簡介</a></li>
+        <li><a href="#">網站地圖</a></li>
+        <li><a href="#">最新消息</a></li>
+        <li><a href="#">新手入門</a></li>
+        <li><a href="#">檔案管理局</a></li>
+        <li><a href="#">English</a></li>
+        <li class="fontSize" aria-label="文字大小">
+          <ul>
+            <li><button type="button">大</button></li>
+            <li><button type="button">中</button></li>
+            <li><button type="button">小</button></li>
+          </ul>
+        </li>
+        <li class="login"><a href="#">登入</a></li>
+      </ul>
+    </nav>
+
+    <search class="search">
+      <div class="tabItems">
+        <button class="now" type="button">整合查詢</button>
+        <button type="button">資源介紹</button>
+      </div>
+
+      <form action="">
+        <input type="text" placeholder="請輸入關鍵字搜尋檔案資源" accesskey="S">
+        <button type="button">查詢</button>
+        <a class="button" href="#">進階查詢</a>
+      </form>
+      <ul class="hotKeywords" aria-label="熱門關鍵字">
+        <li><a href="#">王藍清</a></li>
+        <li><a href="#">陳垂斌</a></li>
+        <li><a href="#">麗水派出所</a></li>
+        <li><a href="#">許倬雲</a></li>
+        <li><a href="#">赤埴清</a></li>
+        <li><a href="#">酵母</a></li>
+        <li><a href="#">景美</a></li>
+        <li><a href="#">葉菁華</a></li>
+        <li><a href="#">蔣經國</a></li>
+        <li><a href="#">樓月</a></li>
+      </ul>
+    </search>
+
+    <button type="button" class="sidebarCtrl" aria-label="開啟側欄"></button>
+  </header>
+
+  <!-- 行動版側欄容器 -->
+  <section class="sidebar">
+  </section>
+
+  <main class="main">
+    <a class="accesskey" href="#aC" accesskey="C" title="主要內容區">:::</a>
+
+    <div class="col-left">
+      <h2 class="secHead1">調整查詢</h2>
+      
+      <search class="search-constraint">
+        <div class="secHead2">以關鍵字縮小查詢</div>
+        <form action="">
+          <input type="text" placeholder="請輸入關鍵字">
+          <button type="button">查詢</button>
+        </form>
+      </search>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">資料庫<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">中華民國大學圖書館學會特藏與古籍數位典藏資料庫 <span class="count">30/452,322</span></a></li>
+            <li><a href="javascript:;">國家圖書館期刊文獻影像系統 <span class="count">30/300,000</span></a></li>
+            <li><a href="javascript:;">國家圖書館古籍影像系統 <span class="count">30/133,744</span></a></li>
+            <li><a href="javascript:;">國家圖書館臺灣圖書集成暨單冊古籍資料庫 <span class="count">30/314</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">相關名稱<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">語言學辭典 <span class="count">1</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">主題<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">語言學研究 <span class="count">153</span></a></li>
+            <li><a href="javascript:;">研究所 <span class="count">43</span></a></li>
+            <li><a href="javascript:;">國圖紀念 <span class="count">30</span></a></li>
+            <li><a href="javascript:;">records <span class="count">26</span></a></li>
+            <li><a href="javascript:;">record what <span class="count">26</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">年代<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">1937年6月1日 <span class="count">1</span></a></li>
+            <li><a href="javascript:;">1936年 <span class="count">1</span></a></li>
+            <li><a href="javascript:;">1936年 <span class="count">1</span></a></li>
+            <li><a href="javascript:;">民國65年5月30日 <span class="count">1</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div class="tray">
+      </section>
+
+    </div>
+
+    <div class="col-right">
+
+      <section class="search-list">
+
+        <div class="search-inform">
+          <h2 class="secHead1">查詢結果</h2>
+          <p>本平台係彙集提供館藏資料共之整合檢索服務，惟各資料庫內容資料欄位不盡相同；查詢結果之個別館藏資料呈現可能有所差異。</p>
+        </div>
+
+        <section class="search-summmary">
+          <p>
+            查詢結果：共
+            <em>183978</em>
+            筆，目前顯示
+            <em>443</em>
+            筆
+            <a href="#">重新調整主題</a>
+          </p>
+          <div class="sorting" aria-label="排序方式">
+            <select name="" id="" >
+              <option value="">預設</option>
+              <option value="">相關度</option>
+              <option value="">XXX</option>
+              <option value="">YYY</option>
+            </select>
+          </div>
+        </section>
+
+        <ol class="list">
+          <li>
+            <span class="order">1</span>
+            <div class="title"><a class="show-lightbox" href="javascript:;">山海關全圖</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+        
+            <dl>
+              <div>
+                <dt>出版日期</dt>
+                <dd>1900-01-01</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd><a href="#">比例</a>、<a href="#">圖例</a></dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#">中央研究院－數位方輿</a></dd>
+              </div>
+            </dl>
+            <img class="prim" src="publicData/image05.jpg" alt="圖說文字">
+        
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <span class="order">2</span>
+            <div class="title"><a href="javascript:;">盛州府全境地輿沿革圖</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark added"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>出版日期</dt>
+                <dd>1810-01-01</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd><a href="#">地圖 / 內容</a></dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#">中央研究院－數位方輿</a></dd>
+              </div>
+            </dl>
+            <img class="prim" src="publicData/image03.jpg" alt="圖說文字">
+
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+          </li>
+        
+          <li>
+            <span class="order">3</span>
+            <div class="title"><a href="#">太倉州沿江水勢港口詳況分界圖</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark added"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>出版日期</dt>
+                <dd>1807-01-01</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd><a href="#">水勢</a>、<a href="#">港口</a>、<a href="#">分界</a>、<a href="#">內容</a></dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#">中央研究院－數位方輿</a></dd>
+              </div>
+            </dl>
+
+            <img class="prim" src="publicData/image02.jpg" alt="圖說文字">
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+          </li>
+        
+          <li>
+            <span class="order">4</span>
+            <div class="title"><a href="#">福寧全圖</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>出版日期</dt>
+                <dd>1842–1884</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd><a href="#">地圖 / 內容</a></dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#">中央研究院－數位方輿</a></dd>
+              </div>
+            </dl>
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+          </li>
+        
+          <li>
+            <span class="order">5</span>
+            <div class="title"><a href="#">福建全圖</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>出版日期</dt>
+                <dd>1864-01-01</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd><a href="#">地圖 / 內容</a></dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#"> 中央研究院－數位方輿</a></dd>
+              </div>
+            </dl>
+            <img class="prim" src="publicData/ph10.jpg" alt="圖說文字">
+
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+          </li>
+          <li>
+            <span class="order">6</span>
+            <div class="title"><a href="#">東風蒼蒼舊照紛城外無人無人老淒此，遊人相何處自終。萬事花雲中九重寂寞，見十聞道萬里度別夕陽終行人得無人收，日之是山玉搔頭寥落人未罷人收何處茫茫。</a></div>
+            <ul class="popularity">
+              <li class="click">點閱：<span class="count">5</span></li>
+              <li class="recom">推薦：<span class="count">2</span></li>
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl class="term-def-pair">
+              <div>
+                <dt>出版日期</dt>
+                <dd>2024/12/31</dd>
+              </div>
+              <div>
+                <dt>主題</dt>
+                <dd>浮荊風吹腸君不見生七如同故人為為我大素手出門</dd>
+              </div>
+              <div>
+                <dt>資料庫</dt>
+                <dd><a href="#">青天浮雲四八蒼蒼</a></dd>
+              </div>
+            </dl>
+            <button type="button" class="drop">摘要</button>
+            <ul class="actions">
+              <li class="action-search"><a href="#">延伸查詢</a></li>
+              <li class="action-link"><a href="#">連結原始資料</a></li>
+            </ul>
+            <img class="cover" src="" alt="">
+          </li>
+        </ol>
+      </section>
+
+    </div>
+
+    <!-- 燈箱：顯示「詳細資料」 -->
+    <div class="lightbox arch-details" role="dialog">
+      <button type="button" class="closeThis">關閉燈箱</button>
+      <div class="secHead">基本資料</div>
+      <section class="arch-meta">
+        <table>
+          <caption>臺灣總督府中央研究所</caption>
+          <tbody>
+          <tr>
+            <th>引用出處–出版年</th>
+            <td>昭和12[1937]</td>
+          </tr>
+          <tr>
+            <th>引用出處–頁碼</th>
+            <td>面548</td>
+          </tr>
+          <tr>
+            <th>稿格資料–高度尺寸</th>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th>Item sets</th>
+            <td>臺灣總督府資料庫</td>
+          </tr>
+          <tr>
+            <th>記識別碼</th>
+            <td>pb03440835481</td>
+          </tr>
+          <tr>
+            <th>引用出處–出版地</th>
+            <td>臺北市</td>
+          </tr>
+          <tr>
+            <th>Media</th>
+            <td>pb03440835481.jpg</td>
+          </tr>
+          <tr>
+            <th>館號登錄號</th>
+            <td>0344083</td>
+          </tr>
+          <tr>
+            <th>引用出處–編刊作者</th>
+            <td>井出和太</td>
+          </tr>
+          <tr>
+            <th>稿格資料–相同</th>
+            <td>—</td>
+          </tr>
+          <tr>
+            <th>引用出處–出版年(西元)</th>
+            <td>1937</td>
+          </tr>
+          <tr>
+            <th>引用出處–書刊名</th>
+            <td>臺灣地誌</td>
+          </tr>
+          <tr>
+            <th>題名</th>
+            <td>臺灣總督府中央研究所</td>
+          </tr>
+          <tr>
+            <th>主題與關鍵字</th>
+            <td>中央研究所 基礎 教育 文化</td>
+          </tr>
+          <tr>
+            <th>尺寸</th>
+            <td>6.1x9.1cm</td>
+          </tr>
+          <tr>
+            <th>引用出處–版次</th>
+            <td>臺灣日日新報社</td>
+          </tr>
+          <tr>
+            <th>典藏單位</th>
+            <td>國立臺灣大學圖書館</td>
+          </tr>
+          <tr>
+            <th>來源機關</th>
+            <td>國立臺灣大學臺灣圖像資料庫</td>
+          </tr>
+          </tbody>
+        </table>
+        <img class="prim" src="publicData/image05.jpg" alt="圖說文字">
+        <ul class="actions">
+          <li class="bookmarkThis"><button type="button">加入收藏</button></li>
+          <li class="recomThis"><button type="button">我要推薦</button></li>
+          <li class="action-search"><a href="#">延伸查詢</a></li>
+          <li class="action-link"><a href="#">連結原始資料</a></li>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="siteFooter">
+    <a class="accesskey" href="#aZ" accesskey="Z" title="頁腳區">:::</a>
+
+    <div class="foot-col-left">
+      <ul class="textLinks">
+        <li><a href="#">政府網站資料開放宣告</a></li>
+        <li><a href="#">隱私權、著作權及資訊安全政箱宣告</a></li>
+        <li><a href="#">聯絡我們</a></li>
+      </ul>
+      <div class="contact">
+        <img class="foot-logo" src="publicData/logo-footer.png" alt="logo">
+        <p>地 址：244013 新北市林口區檔案館路1號</p>
+        <p>總 機：(02)8995-3700</p>
+      </div>
+    </div>
+
+    <div class="foot-col-right">
+      <ul class="url-qrcode">
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            機關檔案目錄查詢網
+          </a></li>
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            國家檔案資訊網</a></li>
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            國家發展委員會檔案管理局</a></li>
+      </ul>
+
+      <ul class="badges">
+        <li><a href="#" target="_blank" title="另開新視窗"><img src="publicData/accessibility2.1_AA.webp" alt="無障礙標章2.1"></a>
+        </li>
+        <li><a href="#" target="_blank" title="另開新視窗"><img src="publicData/egov.png" alt="e-GOV"></a></li>
+      </ul>
+
+      <ul class="update">
+        <li>瀏覽人次：6623718</li>
+        <li>最後更新：2025/05/23</li>
+      </ul>
+    </div>
+
+    <div class="foot-base">
+      <p>國家發展委員會檔案管理局版權所有 2025 © All rights reserved</p>
+    </div>
+
+  </footer>
+
+  <button class="goTop" type="button">回頁面頂端</button>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+@use "variables" as *;
+
+
+// 整合查詢結果
+// ------------------------------------------------------ //
+.search-list {
+  .search-inform {
+    display: flex;
+    width: 94%;
+    margin: 0 auto;
+    padding: 32px 0;
+    line-height: 1.6;
+
+    h2.secHead1 {
+      flex: 0 1 5em;
+      margin: 0 16px 0 0;
+    }
+
+    p {
+      flex: 1 1 auto;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  .search-summmary {
+    width: calc(94% + 32px);
+    margin: 0 auto;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $grayLight;
+    border-radius: $radius1;
+
+    p {
+      margin: 0;
+
+      em {
+        display: inline-block;
+        margin: 0 8px;
+        color: $hilight;
+        font-style: normal;
+      }
+
+      a {
+        display: inline-block;
+        margin-left: 1em;
+      }
+    }
+
+
+  }
+
+  // 排序
+  .sorting {
+    &::before {
+      content: attr(aria-label);
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    select {
+      margin-right: 0;
+    }
+  }
+
+
+  // 查詢結果條列
+  ol.list {
+    width: 94%;
+    margin: 24px auto;
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+
+    a {
+      text-decoration: none;
+    }
+
+    &>li {
+      position: relative;
+      padding: 8px 4px 24px 3em;
+      margin-bottom: 24px;
+      overflow: hidden;
+      border-bottom: 1px solid $borderColor;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:has(.prim) {
+        min-height: 240px;
+      }
+
+      // 序號
+      .order {
+        position: absolute;
+        left: 4px;
+        top: auto;
+        width: 2.5em;
+
+        &::after {
+          content: '.';
+        }
+      }
+
+      // 標題
+      .title {
+        margin: 0 0 1em 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        line-height: 1.4;
+
+        &:has(+ .popularity) {
+          margin-right: 14em;
+        }
+
+        a {
+          color: $linkColor2;
+          &:hover{ text-decoration: underline;}
+        }
+      }
+
+      // 基本資料
+      dl {
+        clear: both;
+
+        &>div {
+          margin: 0 0 .5em;
+        }
+
+        dt,
+        dd {
+          display: inline-block;
+          margin: 0;
+        }
+
+        dt {
+          font-weight: bold;
+
+          &::after {
+            content: '：';
+          }
+        }
+
+        &:has(+ img.prim) {
+          margin-right: 220px;
+        }
+
+        a {
+          color: $linkColor;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          &:focus-visible {
+            outline: 2px solid $linkColor;
+          }
+        }
+
+      }
+
+      // 代表圖
+      img.prim {
+        position: absolute;
+        right: 0;
+        top: 3.2em;
+        width: 186px;
+        aspect-ratio: 1;
+        object-fit: cover;
+      }
+
+      // 點贊、推薦、書籤
+      .popularity {
+        list-style: none;
+        margin: 0;
+        padding: 5px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        line-height: 1;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 16px;
+
+        li {
+          // &.click,
+          // &.recom{
+          //   &::before {
+          //     content: '';
+          //     display: inline-block; vertical-align: middle;
+          //     text-align: center;line-height: 23px;// xxx
+          //     width: 24px; height: 24px;
+          //     background-repeat: no-repeat;
+          //     background-position: center;
+          //     background-size: cover;
+          //     outline: 1px dotted #bbb;
+          //   }
+          // }
+
+          &.mark {
+            button {
+              position: relative;
+              width: 32px;
+              height: 32px;
+              padding: 0;
+              margin: 0;
+              border-radius: 50%;
+              background: transparent;
+              box-shadow: none;
+
+              &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: url(../images/icon_bookmark_outline.svg) no-repeat center;
+                background-size: 50%;
+              }
+
+              &:hover,
+              &:focus {
+                background-color: $grayLight;
+              }
+
+              &:focus-visible {
+                box-shadow: $gray700 0 0 0 2px;
+              }
+            }
+
+            &.added {
+              button {
+                background-color: $primaryColor;
+
+                &::before {
+                  filter: brightness(10);
+                }
+
+                &:focus-visible {
+                  box-shadow: $white 0 0 0 1px, $primaryColor 0 0 0 3px;
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+      // 摘要 button
+      button.drop {
+        position: relative;
+        height: 2em;
+        line-height: 2;
+        padding-left: 8px;
+        padding-right: 24px;
+        margin-left: -8px;
+        color: $linkColor;
+        border-radius: $radius;
+        background-color: $white;
+        box-shadow: $linkColor 0 0 0 0;
+
+        &::after {
+          @include arrow-rightAngle($size: 8px, $borderWidth: 2px, $borderColor: $linkColor);
+          top: .6em;
+          right: 8px;
+        }
+
+        &:hover,
+        &:focus {
+          box-shadow: $linkColor 0 0 0 2px;
+        }
+
+      }
+
+      // 功能列
+      .actions{
+        --act-btn-height: 2em;
+        a:hover{text-decoration: none;}
+
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,103 @@
+@use "variables" as *;
+
+// 分頁
+// ------------------------------------------------------ //
+.pagination {
+  --tinge: #333;
+  --active: #{$assistant1};
+  --invert: #fff;
+
+  @extend %primSecWidth; margin: 3em auto 0; padding: 10px 0;
+  text-align: center; line-height: 1.5;
+  letter-spacing: 0;
+  form{ display: inline-block;}
+  a{text-decoration: none;}
+  em, abbr{
+    display: inline-block; margin: 0 .4em; 
+    font-style: normal; font-weight: bold;
+  }
+  abbr{ text-decoration: none;}
+
+  // 每頁顯示筆數
+  .items{ 
+    display: inline;
+    &>a, &>button{ 
+      display: inline-block; font-weight: bold; color: $fontColor;
+      height: 1.7em; line-height: 1.7; margin:0 2px;padding: 0 6px;
+      border-radius: 0; border: none; 
+      box-shadow: $borderColor 0 0 0 1px;
+      background-color: transparent;
+      transition: .2s;
+      &:hover, &:focus{box-shadow: var(--active) 0 0 0 2px;}
+      &.active{ 
+        box-shadow:$white 0 0 0 0, var(--active) 0 0 0 1px;
+        background-color: var(--active); color:var(--invert);
+        &:hover, &:focus{ box-shadow:$white 0 0 0 1px, var(--active) 0 0 0 3px;}
+      }
+    }
+  }
+
+  // 頁碼和箭頭
+  .page{ 
+    list-style: none; line-height: 1; letter-spacing: 0;
+    display: flex; flex-flow: row wrap; justify-content: center;
+    margin:8px auto; padding: 3px; 
+    &>li{ 
+      flex: 0 0 auto;
+      margin: 4px 2px 4px 1px;
+      a{ 
+        display: block; min-width: 44px;height: 44px; line-height: 44px;
+        position: relative; bottom: 0;padding: 0 5px;
+        background-color: $grayLight; color: $fontColor;
+        outline: none;
+        transition:box-shadow .2s, background .2s;
+        &:hover, &:focus{ box-shadow: var(--active) 0 0 0 1px inset;}
+        &:focus-visible{box-shadow: var(--active) 0 0 0 2px inset;}
+      }
+      &.active{
+        z-index: 90; font-weight: normal;
+        a{
+          color: $fontInvert; background-color: var(--active);
+          &:hover, &:focus{ box-shadow:$white 0 0 0 1px inset, var(--active) 0 0 0 2px;}
+        }
+      }
+
+      // 箭頭
+      &.first, &.prev, &.next, &.last{  
+        text-indent: -20em;
+        a{ 
+          position: relative; overflow: hidden; padding: 0;
+          &::after{
+            content: ''; position: absolute; top: 50%;
+            width:8px; height:8px; margin-top: -5px;
+            border: 2px solid var(--tinge); border-top: none; border-right: none;
+            transform: rotate(45deg);
+          }
+          &:hover, &:focus{
+            --tinge: var(--invert);
+            background-color: var(--active);
+          }
+        }
+      }
+      &.first, &.last{
+        a{
+          &::before{
+            content: ''; position: absolute; top: 50%; left: 18px;
+            width: 2px; height: 14px; transform: translateY(-50%);
+            background:var(--tinge);
+          }
+          &::after{ left: 22px; }
+        }
+      }
+
+      &.prev, &.next{
+        a::after{left: 18px;}
+      }
+      &.next, &.last{
+        a{ transform: rotate(180deg);}
+      }
+    }
+  }
+
+}
+// ------------------------------------------------------ //

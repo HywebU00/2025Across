@@ -1,0 +1,220 @@
+@use "variables" as *;
+
+// 首頁區塊：查詢資源
+// ------------------------------------------------------ //
+.sources{
+  @extend %primSecWidth;
+  padding: 12px 0;
+
+  ul{ list-style: none; margin: 0;padding: 0; }
+
+  .source-list{
+    &>li{
+      margin: 12px 0;
+      &>button{
+        position: relative;
+        padding-left: 12px;
+        padding-right: 24px;
+        margin: 0; width: 100%;
+        overflow: hidden;
+        font-size: 1.15em;
+        height: 3em; line-height: 3;
+        
+        
+        color: $fontColor;
+        border: none;
+        border-radius: $radius1;
+        @extend %gradient-gray;
+        box-shadow:#fff 0 0 0 0, $shadow2 0 1px 3px;
+
+        &::after {
+          content: ''; position: absolute; right: 12px; top: 1.3em;
+          width: 0; height: 0;
+          border-style: solid;
+          border-width: 8px 7px 0 7px;
+          border-color: $secondaryColor transparent transparent transparent;
+        }
+
+        &:hover {
+          box-shadow: #fff 0 0 0 2px, $shadow1 0 3px 8px 2px;
+        }
+        &:focus {
+          background: $secondaryColor;
+          color: $white;
+          &::after{ border-top-color: $white;}
+        }
+      }
+    }
+
+  }
+
+  // 
+  .subTree{
+    display: none;
+    // position: absolute; left: 0;right: 0;
+    width: 90vw;
+    padding: 10px;
+    border: 1px solid #bbb;
+    background-color: #fff;
+    border-radius: 8px;
+    .title{
+      font-weight: bold;
+    }
+    &>ul{
+      &>li{
+        background: #dcf1fa;
+        padding: 8px 16px;margin: 6px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+
+        p{ 
+          margin: 0 20px 0 0;
+          flex: 1 1 55%;
+        }
+
+        .label{
+          display: inline-block;
+          background: #fff;
+          color: red; padding: 4px 12px;
+          border-radius: 6px;
+          border: 1px solid red;
+          margin-left: 8px;
+          font-size: .9em;
+        }
+      }
+    }
+
+
+    // button and link
+    a.button{
+      text-decoration: none;
+    }
+    button,
+    a.button{
+      position: relative;
+      height: 2.8em; line-height: 2.8;
+      padding: 0 18px 0 56px;
+      margin: 4px;
+      background-color: #fff;
+      border-radius: 1.5em;
+      color: $fontColor;
+      text-align: center;
+      box-shadow: $borderColor 0 0 0 1px;
+  
+      &::before {
+        content: '';
+        position: absolute; left: 16px; top: 6px;
+        width: 32px; height: 32px;
+        outline: 1px dashed #c008;
+        outline-offset: -1px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMedium){
+
+    .source-list {
+        display: flex;flex-flow: row wrap;gap: 12px;
+        &>li{
+          flex: 0 0 calc(50% - 6px);
+          margin: 0;
+        }
+      }
+  }
+
+  @media screen and (min-width: $wwNormal){
+    .source-list{
+      &>li{
+        flex-basis: calc(25% - 9px);
+        &>button{
+          // width: calc($normalWidthVW*.25 - 9px);
+        }
+      }
+    }
+    .subTree{
+
+    }
+
+  }
+
+
+}
+
+
+// 首頁區塊：熱門資料庫+熱門閱讀+讀者推薦
+// ------------------------------------------------------ //
+.hotLinks{
+  overflow: hidden;
+  padding-top: 30px;
+  h2{
+    float: left;
+    margin: 0 0 -1px;
+    font-size: 1.6em; line-height: 1.15;
+    letter-spacing: 1px;
+    border-bottom: 4px solid $secondaryColor;
+  }
+
+  ul{
+    list-style: none; margin: 0;padding: 0;
+    border-top: 1px solid $borderColorLight;
+    font-size: 1.15em;
+    line-height: 1.4;
+    clear: both;
+    &>li{
+      margin: 8px 0 0;
+      a{
+        display: block;
+        position: relative;
+        padding: 10px 0 6px;
+        color: $fontColor;
+        text-decoration: none;
+
+        &::after {
+          content: '';
+          position: absolute; left: 0;right: 0; bottom: 0;
+          height: 1px;
+          background-color: $borderColorLight;
+          transition: .15s;
+        }
+
+        &:hover, &:focus{
+          &::after{
+            height: 2px;
+            background-color: $secondaryColor
+          }
+        }
+        &:focus-visible {
+          outline: 2px solid $linkColor;
+          outline-offset: -2px;
+          &::after{display: none }
+        }
+      }
+    }
+  }
+
+  .more{ margin-right: 5px;}
+
+}
+
+// 三欄排版
+.row-col3{
+  @extend %primSecWidth;
+
+  @media screen and (min-width: $wwNormal){
+    display: flex;
+    gap: 48px;
+
+    .hotLinks{
+      flex: 0 0 calc(33.3333% - 32px);
+    }
+  }
+
+}
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+

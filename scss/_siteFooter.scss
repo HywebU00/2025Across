@@ -1,0 +1,159 @@
+@use "variables" as *;
+
+// 頁尾 site footer
+// --------------------------------------------------------------- //
+.siteFooter {
+
+  position: relative;
+  background-color: #f6f6f6;
+  margin: 0;
+  padding: 40px 0 0;
+  border-top: 3px solid $borderColorDark;
+  a{
+    outline: none;
+    color: $fontColor;
+    &:focus-visible{ box-shadow: $fontColor 0 0 0 2px; text-decoration: none;}
+  }
+
+  .foot-col-left, .foot-col-right {
+    margin: 0 $marginDoc 40px;
+  }
+
+  .textLinks {
+    list-style: none; margin: 0 auto 30px;padding: 0;
+    line-height: 1.5;
+    li{
+      display: inline-block;
+      margin: 6px 1em 6px 0;
+    }
+  }
+
+  .contact{
+    img.foot-logo{
+      display: block;
+      margin: 0 0 16px;
+      width: 100%; max-width: 480px;
+    }
+    p{
+      display: inline-block;
+      margin:0 0 .5em;
+      &:has(+p) { margin-right: 1.2em;}
+    }
+  }
+
+
+  .url-qrcode {
+    list-style: none; margin:0 0 30px;padding: 0;
+    display: flex; gap: 15px;
+    li{
+      flex: 0 0 calc(33.3333% - 10px);
+      text-align: center;
+      a{
+        display: block;
+        height: 100%;
+      }
+      img{
+        display: block; margin: 0 auto 10px;
+        width: 90%; max-width: 80px;
+      }
+    }
+  }
+
+  .badges{
+    list-style: none; margin:0;padding: 4px;
+    display: flex; flex-wrap: nowrap; gap: 12px;
+    float: left;
+    li{
+      flex: 0 0 auto;
+    }
+    img{
+      display: block;
+      height: 46px;
+    }
+  }
+
+  .update{
+    list-style: none; margin:20px 0 20px auto;padding: 0;
+    // outline: 2px dashed #00f8;
+    // outline-offset: -2px;
+    width: fit-content;
+    li{
+      &+li{ margin-top: .6em;}
+    }
+  }
+
+  .foot-base {
+    background: #6f6f6f; color: #fff;
+    text-align: center;
+    padding: 16px $marginDoc;
+    p{
+      margin: 0 auto;
+    }
+  }
+  
+ 
+  @media screen and (min-width: $wwNormal){
+
+    display: flex; flex-flow: row wrap;
+    .foot-col-left{
+      flex: 0 0 $normalWidth*.48;
+      margin-right: 60px;
+    }
+    .foot-col-right {
+      flex: 0 0 calc($normalWidth*.52 - 60px);
+      margin-left: 0;
+    }
+
+    .foot-base {
+      flex: 0 0 100%;
+    }
+
+    .url-qrcode{
+      margin: 0 0 30px;
+    }
+
+    .badges{
+      width: auto; margin: 0 12px 12px 0;
+      
+      img[alt*="無障礙"] {height: 58px;}
+
+    }
+    .update{
+      float: right;margin: 0;
+      width: fit-content;
+      li{
+        margin-bottom: .5em;
+        &:last-child {margin-right: 0;}
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwMaximum){
+    .foot-col-left {
+      margin-left: $marginDocMax; flex-basis: 540px;}
+    .foot-col-right {
+      position: relative;
+      flex-basis: calc($maximumWidth - 600px);
+      margin-right: $marginDocMax;
+    }
+
+    .url-qrcode {
+      width: 400px;
+    }
+    .badges{
+      position: absolute; right: 0; top: 0;
+      margin: 0; width: 230px;
+      justify-content: space-between;
+      float: none;
+      li{
+        display: inline;
+      }
+    }
+    .update {
+      position: absolute; top: 80px; right: 0;
+      width: 230px;
+    }
+  }
+
+}
+// --------------------------------------------------------------- //

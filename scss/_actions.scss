@@ -1,0 +1,89 @@
+@use "variables" as *;
+
+// 功能列: 延伸查詢、連結原始資料庫、加入收藏、我要推薦
+// ------------------------------------------------------ //
+.actions {
+  --act-btn-height: 2.4em;
+
+  clear: both;
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+  line-height: 1;
+
+  li {
+    float: left;
+    margin: 0 8px 0 0;
+
+    a, button{
+      position: relative;
+      display: block;
+      height: var(--act-btn-height);
+      line-height: var(--act-btn-height);
+      border-radius: calc(var(--act-btn-height)/2);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 4px;
+        top: 2px;
+        width: 32px;
+        height: calc(100% - 4px);
+        text-align: center;
+        line-height: 32px; // XXX
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+
+    a {
+      padding: 0 12px 0 40px;
+      box-shadow: $linkColor 0 0 0 1px;
+      text-decoration: none;
+
+    }
+    button {
+      margin: 0; 
+      padding-left: 40px;
+    }
+
+    // 延伸搜尋
+    &.action-search {
+      a::before {
+        content: '🔍';
+      }
+    }
+
+    // 連結館藏資料庫
+    &.action-link {
+      a::before {
+        content: '🔗';
+      }
+    }
+    
+    // 加入收藏 button
+    &.bookmarkThis {
+      button::before{
+        left: 6px; top: 3px;
+        background-image: url(../images/icon_bookmark.svg);
+        background-size: 65%;
+        filter: brightness(20);
+      }
+    }
+
+    // 我要推薦 button
+    .recomThis{
+       button::before{
+        left: 0;top: 0;
+       }
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+// ------------------------------------------------------ //
