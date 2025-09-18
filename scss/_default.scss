@@ -14,7 +14,7 @@ body{
 
 a{
   color: $linkColor;
-  &:focus-visible{ outline: 2px solid $primaryColor;}
+  outline: none;
 }
 // ------------------------------------------------------ //
 

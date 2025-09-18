@@ -2,144 +2,188 @@
 
 // 首頁區塊：查詢資源
 // ------------------------------------------------------ //
-.sources{
+.resources{
   @extend %primSecWidth;
   padding: 12px 0;
 
   ul{ list-style: none; margin: 0;padding: 0; }
 
-  .source-list{
-    &>li{
-      margin: 12px 0;
-      &>button{
-        position: relative;
-        padding-left: 12px;
-        padding-right: 24px;
-        margin: 0; width: 100%;
-        overflow: hidden;
-        font-size: 1.15em;
-        height: 3em; line-height: 3;
-        
-        
-        color: $fontColor;
-        border: none;
-        border-radius: $radius1;
-        @extend %gradient-gray;
-        box-shadow:#fff 0 0 0 0, $shadow2 0 1px 3px;
+  .resource-group {
 
+    button.resource-name {
+      position: relative;
+      padding:.8em 36px .8em 12px;
+      margin:6px 0; width: 100%;
+      font-size: 1.15em;
+      min-height: 3em; line-height: 1.4;
+      height: auto;
+      border: none;
+      border-radius: $radius1;
+      @extend %gradient-gray;
+      color: $fontColor;
+      box-shadow:#fff 0 0 0 0, $shadow2 0 1px 3px;
+
+      &::after {
+        content: ''; position: absolute; right: 12px; top: 1.3em;
+        width: 0; height: 0;
+        border-style: solid;
+        border-width: 8px 7px 0 7px;
+        border-color: $secondaryColor transparent transparent transparent;
+      }
+
+      &:hover, &:focus {
+        box-shadow: #fff 0 0 0 2px, $shadow1 0 3px 8px 2px;
+      }
+
+      &.now{
+        @extend %gradient-ocean;
+        color: $white;
         &::after {
-          content: ''; position: absolute; right: 12px; top: 1.3em;
-          width: 0; height: 0;
-          border-style: solid;
-          border-width: 8px 7px 0 7px;
-          border-color: $secondaryColor transparent transparent transparent;
-        }
-
-        &:hover {
-          box-shadow: #fff 0 0 0 2px, $shadow1 0 3px 8px 2px;
-        }
-        &:focus {
-          background: $secondaryColor;
-          color: $white;
-          &::after{ border-top-color: $white;}
+          rotate: 180deg;
+          border-top-color: $white;
         }
       }
     }
 
   }
 
-  // 
-  .subTree{
-    display: none;
-    // position: absolute; left: 0;right: 0;
-    width: 90vw;
-    padding: 10px;
-    border: 1px solid #bbb;
-    background-color: #fff;
-    border-radius: 8px;
-    .title{
-      font-weight: bold;
-    }
-    &>ul{
-      &>li{
-        background: #dcf1fa;
-        padding: 8px 16px;margin: 6px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
 
-        p{ 
-          margin: 0 20px 0 0;
-          flex: 1 1 55%;
-        }
+  @media screen and (min-width: 480px ){
 
-        .label{
-          display: inline-block;
-          background: #fff;
-          color: red; padding: 4px 12px;
-          border-radius: 6px;
-          border: 1px solid red;
-          margin-left: 8px;
-          font-size: .9em;
-        }
-      }
-    }
-
-
-    // button and link
-    a.button{
-      text-decoration: none;
-    }
-    button,
-    a.button{
-      position: relative;
-      height: 2.8em; line-height: 2.8;
-      padding: 0 18px 0 56px;
-      margin: 4px;
-      background-color: #fff;
-      border-radius: 1.5em;
-      color: $fontColor;
-      text-align: center;
-      box-shadow: $borderColor 0 0 0 1px;
+    .resource-group {
+      display: flex;
+      flex-flow: row wrap;
+      gap: 12px;
+      margin-bottom: 12px;
   
-      &::before {
-        content: '';
-        position: absolute; left: 16px; top: 6px;
-        width: 32px; height: 32px;
-        outline: 1px dashed #c008;
-        outline-offset: -1px;
+      button.resource-name {
+        flex: 0 0 calc(50% - 6px);
+        margin: 0;
+        width: auto;
       }
     }
   }
 
   @media screen and (min-width: $wwMedium){
 
-    .source-list {
-        display: flex;flex-flow: row wrap;gap: 12px;
-        &>li{
-          flex: 0 0 calc(50% - 6px);
-          margin: 0;
-        }
-      }
-  }
-
-  @media screen and (min-width: $wwNormal){
-    .source-list{
-      &>li{
-        flex-basis: calc(25% - 9px);
-        &>button{
-          // width: calc($normalWidthVW*.25 - 9px);
-        }
+    .resource-group {
+      button.resource-name {
+        flex-basis: calc(33.3333% - 8px);
       }
     }
-    .subTree{
 
+  }
+  @media screen and (min-width: $wwNormal){
+    .resource-group {
+      button.resource-name{
+        flex-basis: calc(25% - 9px);
+      }
     }
 
   }
 
 
 }
+
+// ------------------------------------------------------ //
+// ------------------------------------------------------ //
+.resource-this{
+  margin: 12px auto 24px;
+  padding:16px 8px 0px;
+  line-height: 1.6;
+  border: 1px solid $borderColor;
+  background-color: $white;
+  border-radius: $radius1;
+  .resource-this-name{
+    padding: 0 8px;
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+  &>ul{
+    &>li{
+      background: #dcf1fa;
+      padding:10px 16px;margin: 6px 0;
+      border-radius: $radius;
+      display: flex; flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+
+      p{ 
+        flex: 0 0 100%;
+        margin: 0 0 4px;
+        font-size: 1.15em;
+        &+button, &+.button{
+          margin-left: auto;
+        }
+      }
+
+      button,
+      a.button{
+        flex: 0 0 auto;
+        position: relative;
+        white-space: nowrap;
+        height: 2.6em; line-height: 2.7;
+        padding: 0 16px 0 calc(2.6em + 4px);
+        margin: 0;
+        border-radius: 1.5em;
+        text-align: center;
+        background-color: $white;
+        color: $fontColor;
+        box-shadow: $borderColor 0 0 0 1px;
+        &::before {
+          content: '';
+          position: absolute; left: 14px; top: 8px;
+          height: calc(100% - 16px);
+          aspect-ratio: 1;
+        }
+        &:hover{
+          box-shadow: $borderColorDark 0 0 0 1px;
+        }
+        &:focus {
+          box-shadow: $borderColorDark 0 0 0 2px;
+          border: none;
+          outline: none;
+        }
+      }
+
+      button {
+        &::before {
+          background: url(../images/icon_heart.svg) no-repeat center center;
+          background-size: 100%;
+        }
+      }
+      a.button {
+        &::before {
+          background: url(../images/icon_file.svg) no-repeat center center;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+
+
+  // button and link
+  a.button{
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: $wwMedium){
+    &>ul{
+      &>li{
+        flex-wrap: nowrap;
+        p{
+          flex:0 1 calc(100% - 17em);
+           margin-right: auto;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $wwNormal){
+  }
+}
+// ------------------------------------------------------ //
+
 
 
 // 首頁區塊：熱門資料庫+熱門閱讀+讀者推薦

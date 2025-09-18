@@ -217,6 +217,7 @@ time {
 .more {
   --color: #{$fontColor};
   --bg: transparent;
+  --arrow-color: #{$linkColor};
   --moreH: 2.6em;
 
   margin: 8px 0;
@@ -245,15 +246,18 @@ time {
       height: 10px;
       transform: rotate(45deg);
       transition: .2s;
-      border: 2px solid var(--color);
+      border: 2px solid var(--arrow-color);
       border-left: none;
       border-bottom: none;
     }
 
-    &:hover,
+    &:hover {
+      box-shadow: var(--arrow-color) 0 0 0 1px;
+    }
     &:focus {
       --color: #{$white};
-      --bg: #{$primaryColor};
+      --bg: #{$linkColor};
+      --arrow-color: #{$white};
     }
   }
 
