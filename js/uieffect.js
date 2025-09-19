@@ -149,23 +149,23 @@ $(function(){
   // 回到頁面頂端 Go Top
   // --------------------------------------------------------------- //
   _goTop.on( 'click', function(){
-    _html.stop(true,false).animate({scrollTop: 0}, 800, function(){
+    _html.animate({scrollTop: 0}, 800, function(){
       _goCenter.trigger('focus');
     });
   });
   // --------------------------------------------------------------- //
 
 
+  // 瀏覽器卷動 scroll 事件
+  // --------------------------------------------------------------- //
+  _window.on('scroll', function(){
 
+    _window.scrollTop() > 0 && _goCenter.trigger('blur');
 
-
-
-
-
-
-
-
-
+    // goTop button 顯示、隱藏
+    _window.scrollTop() > 200 ? _goTop.addClass('show') :  _goTop.removeClass('show');
+  })
+  _window.trigger('scroll');
 
 
 

@@ -38,20 +38,20 @@ time {
 // 跳至內容區 
 // --------------------------------------------------------------- //
 .goCenter{
-  --bg:#555;
-  --color:#fff;
+  --bg:#{$assistant2};
+  --color:#{$white};
 
   display: none;
   @media screen and (min-width: $wwNormal) {
     display: block; z-index: 880;
-    position: fixed; top: -2em; right: 60%; 
-    padding: 0 .5em; border-radius: 0 0 4px 4px;
+    position: fixed; top: -2em; left: 60px; 
+    padding: 0 .5em; border-radius: 0 0 6px 6px;
     overflow: hidden;
     height: 1.8em; line-height: 1.9;
     text-decoration: none; outline: none; cursor: pointer;
     background-color: var(--bg); color: var(--color);
     transition:top .3s; 
-    &:focus{ --bg: #000; top: 0;}
+    &:focus{  top: 0;}
   }
   @media screen and (min-width: $wwMaximum) {
     // left: calc( 50vw  - #{$wwMaximum}*.5 );
