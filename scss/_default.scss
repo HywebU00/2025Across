@@ -1,5 +1,11 @@
 @use "variables" as *;
 
+:root{
+  font-size: 1em; // 16px
+
+  --bodyBg: #fff;
+}
+
 
 body{
   margin: 0; padding: 0;
@@ -7,6 +13,11 @@ body{
   font-family: Arial, Helvetica, "Microsoft JhengHei", "微軟正黑體", sans-serif;
   
   &.noScroll{ overflow: hidden; overflow-y:hidden; }
+
+  &.smallFont .main{ font-size: 1rem;}
+  &.mediumFont .main{ font-size: 1.2rem;}
+  &.largeFont .main{ font-size: 1.5rem;}
+
 }
 *,
 *::before,

@@ -14,10 +14,7 @@ $(function(){
 
   // 取得主要區塊的 jQuery 物件
   const _siteHeader = $('.siteHeader');         // 網站標頭區塊
-  const _menu = _siteHeader.find('.menu');      // 標頭中的主選單（寬版主選單）
-  const _search = $('.search');                 // 站內查詢區
   const _siteFooter = $('.siteFooter');         // 網站頁尾區塊
-  const _footSiteTree = _siteFooter.find('.siteTree>ul>li>ul'); // fatFooter 開合區
    
   _body.append('<div class="sidebarMask"></div>');        // 製作行動版側欄遮罩
   const _sidebar = $('.sidebar');                         // 行動版側欄
@@ -27,7 +24,6 @@ $(function(){
   const _sidebarCtrl = $('.sidebarCtrl'); // 行動版側欄控制按鈕
   const _goCenter = $('.goCenter');       // 「跳到主內容」按鈕
   const _goTop = $('.goTop');             // 「回到頁面頂端」按鈕
-  const _fatFootCtrl = _siteFooter.find('.fatFootCtrl');  // fatfooter 開合控制按鈕
 
 
   
@@ -100,6 +96,76 @@ $(function(){
     }
   })
   // --------------------------------------------------------------- //
+
+
+
+  // font size 和 cookie 
+  // --------------------------------------------------------------- //
+  // font size：顯示所選項目
+  const _fontSize = $('.fontSize');
+  var _fsOption = _fontSize.find('ul>li>button');
+
+  _fsOption.on( 'click', function(){
+    let fontClass = $(this).attr('class');
+    $(this).parent('li').addClass('now').siblings().removeClass('now');
+    _body.removeClass('largeFont mediumFont smallFont').addClass(fontClass);
+    createCookie('FontSize', fontClass , 365);
+  })
+
+  function createCookie(name, value, days) {
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      var expires = '; expires=' + date.toGMTString();
+    } else {
+      expires = '';
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+  }
+
+  function readCookie(name) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  window.onload = function () {
+    var cookie = readCookie('FontSize');
+
+    _body.removeClass('largeFont mediumFont smallFont').addClass(cookie);
+    _body.attr('class').split(' ').forEach(function(cls){
+      _fsOption.filter('.' + cls).parent('li').addClass('now');
+    });
+  }
+  // font size 和 cookie end -------------------------------------- //  
+
+
+
+  // 回到頁面頂端 Go Top
+  // --------------------------------------------------------------- //
+  _goTop.on( 'click', function(){
+    _html.stop(true,false).animate({scrollTop: 0}, 800, function(){
+      _goCenter.trigger('focus');
+    });
+  });
+  // --------------------------------------------------------------- //
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -185,6 +251,46 @@ $(function(){
       _hideLightbox.trigger('click');
     }
   })
+
+
+
+  // 改變瀏覽器寬度 window resize 
+  // --------------------------------------------------------------- //
+  var winResizeTimer;
+  _window.resize(function () {
+    clearTimeout(winResizeTimer);
+    winResizeTimer = setTimeout( function () {
+  
+      wwNew = _window.width();
+
+      // 由小螢幕到寬螢幕
+      if( ww < wwNormal && wwNew >= wwNormal ) {
+        if (_sidebar.hasClass('reveal')) {
+          _sidebar.removeClass('reveal').removeAttr('style');
+          _sidebarMask.hide().removeAttr('style');
+          _sidebarCtrl.removeClass('closeIt');
+          
+          _body.removeClass('noScroll');
+        }
+        
+        _body.removeAttr('style');
+
+        hh = _siteHeader.outerHeight();
+        // fixHeadThreshold =  hh - _menu.innerHeight();
+        _window.trigger('scroll');
+      }
+  
+      // 由寬螢幕到小螢幕
+      if( ww >= wwNormal && wwNew < wwNormal ){
+        hh = _siteHeader.outerHeight();
+        // fixHeadThreshold = 0;
+        _body.removeAttr('style');
+      }
+
+      ww = wwNew;
+    }, 200);
+  });
+  // window resize  end -------------------------------------------- //
 
   
 })
