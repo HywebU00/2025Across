@@ -44,7 +44,7 @@ time {
   display: none;
   @media screen and (min-width: $wwNormal) {
     display: block; z-index: 880;
-    position: fixed; top: -2em; left: 60px; 
+    position: fixed; top: -2em; left: $marginDoc  ; 
     padding: 0 .5em; border-radius: 0 0 6px 6px;
     overflow: hidden;
     height: 1.8em; line-height: 1.9;
@@ -54,8 +54,7 @@ time {
     &:focus{  top: 0;}
   }
   @media screen and (min-width: $wwMaximum) {
-    // left: calc( 50vw  - #{$wwMaximum}*.5 );
-    right: calc(50% + #{$wwMaximum}*.1);
+    left: calc(50% - $wwMaximum*.5 + $wwMaximum*.04 );
   }
 }
 // --------------------------------------------------------------- //
@@ -65,8 +64,8 @@ time {
 // 回頁面最上方 
 // --------------------------------------------------------------- //
 .goTop{
-  --tinge: #fff;
-  --bg: #555;
+  --tinge: #{$grayDark};
+  --bg: rgb(255 255 255 / .8);
   --size: 60px;
   --arrowSize : 12px;
 
@@ -76,7 +75,7 @@ time {
   padding:0;margin: 0;
   border: none; border-radius: 50%; 
   background-color: var(--bg);
-  box-shadow: var(--bg) 0 0 0;
+  box-shadow: rgba(0 0 0 / .4) 0 0 8px;
   transition: all .2s, bottom 1s;
   &::before{
     content: ''; position: absolute;
@@ -89,9 +88,15 @@ time {
     transform: rotate(45deg);
   }
 
-  &:hover, &:focus {--bg: #000;}
-  &:focus{--bg: #a00;box-shadow: var(--bg) 0 0 0 3px;}
+  &:hover {
+    --bg: #{$white};
+  }
+  &:focus {
+    --bg: #{$primaryColor};
+    --tinge: #{$white};
 
+    box-shadow: var(--bg) 0 0 0 3px;
+  }
   &.show{ bottom: 16px;}
 
   @media screen and ( min-width: calc($wwMaximum + 152px) ) {
