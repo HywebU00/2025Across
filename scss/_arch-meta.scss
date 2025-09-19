@@ -62,7 +62,10 @@
 
   }
 
-  .actions{ clear: both;}
+  .actions{ 
+    --act-btn-height: 2.4em;
+    clear: both;
+  }
 
 
 }

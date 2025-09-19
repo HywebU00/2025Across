@@ -3,7 +3,7 @@
 // 功能列: 延伸查詢、連結原始資料庫、加入收藏、我要推薦
 // ------------------------------------------------------ //
 .actions {
-  --act-btn-height: 2.4em;
+  --act-btn-height: 2em;
 
   clear: both;
   list-style: none;
@@ -25,12 +25,11 @@
       &::before {
         content: '';
         position: absolute;
-        left: 4px;
+        left: 6px;
         top: 2px;
-        width: 32px;
         height: calc(100% - 4px);
+        aspect-ratio: 1;
         text-align: center;
-        line-height: 32px; // XXX
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -42,10 +41,17 @@
       box-shadow: $linkColor 0 0 0 1px;
       text-decoration: none;
 
+      &:hover, &:focus{
+        box-shadow: $assistant1 0 0 0 2px;
+      }
+
     }
     button {
       margin: 0; 
       padding-left: 40px;
+      &:hover, &:focus{
+        box-shadow:$white 0 0 0 1px inset, $assistant1 0 0 0 2px;
+      }
     }
 
     // 延伸搜尋
