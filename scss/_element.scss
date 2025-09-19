@@ -297,7 +297,7 @@ button.closeThis{
   &::after{transform: rotate(-45deg);}
 
   &:hover, &:focus { 
-    background-color: $black;
+    background-color: $assistant2;
     // &::before, &::after{ background-color: $primaryColor;}
   }
    &:focus{
