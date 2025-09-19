@@ -161,7 +161,7 @@ time {
   &:hover, &:focus{
     --bg: #{$assistant2};
   }
-  &:focus-visible{
+  &:focus{
     box-shadow: var(--tinge) 0 0 0 2px inset;
   }
 

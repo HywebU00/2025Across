@@ -79,6 +79,15 @@
                   box-shadow: $white 0 0 0 2px;
                 }
               }
+              &.now {
+                button{
+                  background-color: $white;
+                  color: $fontColor;
+                  &:focus{
+                    box-shadow:$linkColor 0 0 0 1px, $white 0 0 0 3px;
+                  }
+                }
+              }
             }
           }
         }

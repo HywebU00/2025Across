@@ -36,7 +36,6 @@
 
     p {
       margin: 0;
-
       em {
         display: inline-block;
         margin: 0 8px;
@@ -64,6 +63,51 @@
     select {
       margin-right: 0;
     }
+  }
+
+  .viewMode{
+    // outline: 1px dashed #c008;
+    // outline-offset: -2px;
+    display: flex;
+    &::before {
+      content: attr(aria-label)'：';
+      line-height: 2.3;
+    }
+    button{
+      --tinge: #{$gray700};
+      --bgc: #{$white};
+
+      position: relative;
+      height: 2.2em; line-height: 2.3;
+      padding: 0 8px 0  36px;
+      margin:0;
+      background: var(--bgc);
+      color: var(--tinge);
+      box-shadow: none;
+
+      &::before{
+        content: '';
+        position: absolute;
+        left: 10px; top: calc(50% - 1px);
+        height: 3px; width: 18px;
+        background: linear-gradient(to right, var(--tinge) 3px, transparent 3px 6px, var(--tinge) 6px);
+        box-shadow: var(--tinge) 0 -6px 0 , var(--tinge) 0 6px 0;
+      }
+
+      &:first-child {
+        border-radius: 8px 0 0 8px;
+      }
+      &:last-child {
+        border-radius: 0 8px 8px 0;
+      }
+
+      &.now{
+        --tinge: #{$white};
+        --bgc: #{$hilight};
+      }
+
+    }
+
   }
 
 

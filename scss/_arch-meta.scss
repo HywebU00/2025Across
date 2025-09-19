@@ -5,7 +5,7 @@
 // ------------------------------------------------------ //
 .arch-meta {
   position: relative;
-  width: 96%;
+  width: 94%;
   margin: 12px auto;
 
   img.prim {
@@ -28,36 +28,34 @@
   dl{
     width: 100%;
     margin: 0 0 24px;
-    line-height: 1.4;
+    line-height: 1.6;
 
     &>div{
       border-bottom: 1px dotted $borderColorLight;
-      display: flex;
+      padding: 8px 0;
       &:last-child {
         border-bottom-width: 2px;
         border-bottom-style: solid;
       }
     }
     dt, dd{
+      display: inline-block;
       margin: 0; 
-      padding: .8em 4px .7em;
+      padding: .3em 4px .2em;
     }
     dt{
-      flex: 0 0 12em;
       font-weight: bold;
-      padding-right: 1em;
-      position: relative;
       &::after {
-        content: '';
-        position: absolute; top: 4px;
-        bottom: 4px; right: 0;
-        width: 3px;
-        background-color: $gray;
+        content: '：';
       }
     }
     dd{
-      flex: 1 1 auto;
-      padding-left: .8em;
+      word-break: break-all;
+      a{
+        &:focus {
+          outline: 2px solid $linkColor;
+        }
+      }
     }
 
   }
@@ -67,6 +65,35 @@
     clear: both;
   }
 
+  @media screen and (min-width: $wwMedium){
+    dl {
+      &>div {
+        display: flex;
+      }
+  
+      dt {
+        flex: 0 0 12em;
+        padding-right: 1em;
+        position: relative;
+  
+        &::after {
+          content: '';
+          position: absolute;
+          top: -4px;
+          bottom: -4px;
+          right: 0;
+          width: 3px;
+          background-color: $gray;
+        }
+      }
+  
+      dd {
+        flex: 1 1 auto;
+        padding-left: .8em;
+      }
+  
+    }
+  }
 
 }
 // ------------------------------------------------------ //

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>檔案資源整合查詢平台</title>
+  <link href="images/favicon.png" rel="icon" type="image/ico">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/jquery-3.7.1.min.js"></script>
+  <script src="js/uieffect.js"></script>
+
+</head>
+
+<body>
+  <a class="goCenter" href="#aC" tabindex="0">按 Enter 到主內容區</a>
+
+  <header class="siteHeader">
+    <a class="accesskey" href="#aU" accesskey="U" title="版頭區">:::</a>
+
+    <h1><a href="mp.html">檔案資源整合查詢平台</a></h1>
+    <button type="button" class="sidebarCtrl" aria-label="開啟側欄"></button>
+
+    <nav class="headNav">
+      <ul>
+        <li><a href="#">平台簡介</a></li>
+        <li><a href="#">網站地圖</a></li>
+        <li><a href="#">最新消息</a></li>
+        <li><a href="#">新手入門</a></li>
+        <li><a href="#">檔案管理局</a></li>
+        <li><a href="#">English</a></li>
+        <li class="fontSize" aria-label="文字大小">
+          <ul>
+            <li><button class="smallFont" type="button">小</button></li>
+            <li><button class="mediumFont" type="button">中</button></li>
+            <li><button class="largeFont" type="button">大</button></li>
+          </ul>
+        </li>
+        <li class="login"><a href="#">登入</a></li>
+      </ul>
+    </nav>
+
+    <search class="search">
+      <div class="tabItems">
+        <button type="button">整合查詢</button>
+        <button class="now" type="button">資源介紹</button>
+      </div>
+
+      <form action="">
+        <input type="text" placeholder="請輸入關鍵字搜尋檔案資源" accesskey="S">
+        <button type="button">查詢</button>
+        <a class="button" href="#">進階查詢</a>
+      </form>
+      <ul class="hotKeywords" aria-label="熱門關鍵字">
+        <li><a href="#">王藍清</a></li>
+        <li><a href="#">陳垂斌</a></li>
+        <li><a href="#">麗水派出所</a></li>
+        <li><a href="#">許倬雲</a></li>
+        <li><a href="#">赤埴清</a></li>
+        <li><a href="#">酵母</a></li>
+        <li><a href="#">景美</a></li>
+        <li><a href="#">葉菁華</a></li>
+        <li><a href="#">蔣經國</a></li>
+        <li><a href="#">樓月</a></li>
+      </ul>
+    </search>
+
+  </header>
+
+  <!-- 行動版側欄容器 -->
+  <section class="sidebar">
+  </section>
+
+  <main class="main">
+    <a class="accesskey" href="#aC" accesskey="C" title="主要內容區">:::</a>
+
+    <!-- <div class="tabLike">資源介紹</div> -->
+
+    <div class="col-left">
+      <h2 class="secHead1">調整查詢</h2>
+      
+      <section class="search-classify drawer">
+        <h3 class="secHead3">機關分類<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">中央研究院 <span class="count">8</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">時間分類<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">中華民國（民國元年～迄今） <span class="count">7</span></a></li>
+            <li><a href="javascript:;">日本統治時期（1895~1945） <span class="count">1</span></a></li>
+            <li><a href="javascript:;">明清時期<span class="count">7</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">型態分類<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">圖像、照片 <span class="count">7</span></a></li>
+            <li><a href="javascript:;">文書 <span class="count">6</span></a></li>
+            <li><a href="javascript:;">影音 <span class="count">1</span></a></li>
+            <li><a href="javascript:;">地圖 <span class="count">1</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      </section>
+
+      <section class="search-classify drawer">
+        <h3 class="secHead3">內容分類<button class="handle" type="button" aria-label="展開／收合"></button></h3>
+        <div class="tray">
+          <ul>
+            <li><a href="javascript:;">民間文書 <span class="count">7</span></a></li>
+            <li><a href="javascript:;">官方檔案 <span class="count">7</span></a></li>
+          </ul>
+          <div class="more"><a href="#">看更多</a></div>
+        </div>
+      
+      </section>
+
+    </div>
+
+    <div class="col-right">
+
+      <section class="search-list">
+
+        <div class="search-inform">
+          <h2 class="secHead1">查詢結果</h2>
+        </div>
+
+        <section class="search-summmary">
+          <div class="viewMode" aria-label="顯示方式">
+            <button class="viewMode-1" type="button">簡目</button>
+            <button class="viewMode-2 now" type="button">詳目</button>
+          </div>
+          <p>
+            查詢結果：共<em>8</em>筆，目前顯示<em>8</em>筆
+          </p>
+          <div class="sorting" aria-label="排序方式">
+            <select name="" id="" >
+              <option value="">相關度</option>
+              <option value="">預設</option>
+              <option value="">XXX</option>
+              <option value="">YYY</option>
+            </select>
+          </div>
+        </section>
+
+        <ol class="list">
+          <li>
+            <span class="order">1</span>
+            <div class="title"><a class="show-lightbox" href="javascript:;">中央研究院一數位方輿</a></div>
+            <ul class="popularity">
+              <li class="mark added"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://digitalatlas.asdc.sinica.edu.tw/">https://digitalatlas.asdc.sinica.edu.tw/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+            </dl>
+          </li>
+      
+          <li>
+            <span class="order">2</span>
+            <div class="title"><a href="javascript:;">中央研究院社會學研究所一中央研究院院史照片資料庫</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://gissrv4.sinica.edu.tw/gis/SinicaMemories">https://gissrv4.sinica.edu.tw/gis/SinicaMemories</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">3</span>
+            <div class="title"><a href="javascript:;">中央研究院近代史研究所一清代奏摺</a></div>
+            <ul class="popularity">
+              <li class="mark added"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://mhdb.mh.sinica.edu.tw/document/">https://mhdb.mh.sinica.edu.tw/document/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">4</span>
+            <div class="title"><a href="javascript:;">中央研究院近代史研究所一近代春秋TIS</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://mhdb.mh.sinica.edu.tw/diary/index.php">https://mhdb.mh.sinica.edu.tw/diary/index.php</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">5</span>
+            <div class="title"><a href="javascript:;">中央研究院臺灣史研究所一臺灣史檔案資源系統</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://tais.ith.sinica.edu.tw/sinicafrsFront/">https://tais.ith.sinica.edu.tw/sinicafrsFront/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">6</span>
+            <div class="title"><a href="javascript:;">中央研究院歷史語言研究所一內閣大庫檔案目錄</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://newarchive.ihp.sinica.edu.tw/mcttp/">https://newarchive.ihp.sinica.edu.tw/mcttp/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+              <div>
+                <dt>是否使用proxy</dt>
+                <dd>否</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">7</span>
+            <div class="title"><a href="javascript:;">中央研究院近代史研究所一檔案館館藏檢索系統</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://archivesonline.mh.sinica.edu.tw/">https://archivesonline.mh.sinica.edu.tw/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+              <div>
+                <dt>是否使用proxy</dt>
+                <dd>否</dd>
+              </div>
+            </dl>
+          </li>
+          <li>
+            <span class="order">8</span>
+            <div class="title"><a href="javascript:;">中央研究院社會學研究所一臺灣外省人生命記憶與敘事資料庫</a></div>
+            <ul class="popularity">
+              <li class="mark"><button aria-label="加入書籤" class="icon-bookmark" type="button"></button></li>
+            </ul>
+            <dl>
+              <div>
+                <dt>資源網址</dt>
+                <dd><a href="https://ndweb.iis.sinica.edu.tw/TWM/Public/content/">https://ndweb.iis.sinica.edu.tw/TWM/Public/content/</a></dd>
+              </div>
+              <div>
+                <dt>語文別</dt>
+                <dd>中文</dd>
+              </div>
+              <div>
+                <dt>是否使用proxy</dt>
+                <dd>否</dd>
+              </div>
+            </dl>
+          </li>
+        </ol>
+      </section>
+
+    </div>
+
+    <!-- 燈箱：顯示「資源介紹」 -->
+    <div class="lightbox arch-details" role="dialog">
+      <button type="button" class="closeThis">關閉燈箱</button>
+      <div class="secHead">資源介紹</div>
+      <section class="arch-meta">
+        <div class="caption">中央研究院一數位方輿</div>
+        <dl>
+          <div>
+            <dt>資源網址</dt>
+            <dd><a href="https://digitalatlas.asdc.sinica.edu.tw/">https://digitalatlas.asdc.sinica.edu.tw/</a></dd>
+          </div>
+          <div>
+            <dt>資源簡介</dt>
+            <dd>「數位方輿」網站收錄近300件美國國會圖書館、大英圖書館所藏之珍罕明清輿圖，彈指之間即可鉅細靡遺瀏覽輿圖的精妙與旨趣。除由國立故宮博物院研究員林天人研析解圖，部份資料更與美國國會圖書館資料庫串聯，並備有英文版可供查詢閱覽。可與本中心於2013年、2015年出版之《皇輿搜覽-美國國會圖書館所藏明清輿圖》與《方輿搜覽 - 大英圖書館所藏中文歷史地圖》實體圖錄對照觀看。</dd>
+          </div>
+          <div>
+            <dt>語文別</dt>
+            <dd>中文、西文</dd>
+          </div>
+          <div>
+            <dt>管理單位</dt>
+            <dd>中研院數位文化中心</dd>
+          </div>
+        </dl>
+        <ul class="actions">
+          <li class="bookmarkThis"><button type="button">加入收藏</button></li>
+        </ul>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="siteFooter">
+    <a class="accesskey" href="#aZ" accesskey="Z" title="頁腳區">:::</a>
+
+    <div class="foot-col-left">
+      <ul class="textLinks">
+        <li><a href="#">政府網站資料開放宣告</a></li>
+        <li><a href="#">隱私權、著作權及資訊安全政箱宣告</a></li>
+        <li><a href="#">聯絡我們</a></li>
+      </ul>
+      <div class="contact">
+        <img class="foot-logo" src="publicData/logo-footer.png" alt="logo">
+        <p>地 址：244013 新北市林口區檔案館路1號</p>
+        <p>總 機：(02)8995-3700</p>
+      </div>
+    </div>
+
+    <div class="foot-col-right">
+      <ul class="url-qrcode">
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            機關檔案目錄查詢網
+          </a></li>
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            國家檔案資訊網</a></li>
+        <li><a href="#">
+            <img src="publicData/qrcode_1.png" alt="QR code">
+            國家發展委員會檔案管理局</a></li>
+      </ul>
+
+      <ul class="badges">
+        <li><a href="#" target="_blank" title="另開新視窗"><img src="publicData/accessibility2.1_AA.webp" alt="無障礙標章2.1"></a>
+        </li>
+        <li><a href="#" target="_blank" title="另開新視窗"><img src="publicData/egov.png" alt="e-GOV"></a></li>
+      </ul>
+
+      <ul class="update">
+        <li>瀏覽人次：6623718</li>
+        <li>最後更新：2025/05/23</li>
+      </ul>
+    </div>
+
+    <div class="foot-base">
+      <p>國家發展委員會檔案管理局版權所有 2025 © All rights reserved</p>
+    </div>
+
+  </footer>
+
+  <button class="goTop" type="button">回頁面頂端</button>
+</body>
+
+</html>
